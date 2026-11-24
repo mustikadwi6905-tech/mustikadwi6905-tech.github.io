@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portofolio Mustika Dwi Kharisma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE everyday-professional: a business operator who builds her own AI tools, calm and confident
+   IDEA an atlas plate of one company's operations: the systems she built, mapped as one connected network
+   PICTURE a live system map: Kentford ERP at the centre, customer tools on the left, marketing engine on the right, a token travelling the routes
+   COLOUR deep sea #0a2540 band, sky #8fd3ff, white, signal pink #ff5c8a for what she built
+   TYPE Hanken Grotesk 300 very large for the name + Hanken Grotesk for text
+   LAYOUT name across the top of the sea band, map full width beneath; then projects (ERP wide, four in 2x2), method, background, contact; phone stacks title, map, content */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#07182b);--ink:light-dark(#0a2540,#e8f2fb);--soft:light-dark(#46607a,#9fb6cc);--line:light-dark(#d5e1ec,#1d3a58);--panel:light-dark(#f3f8fc,#0c2238);--sea:#0a2540;--sky:#8fd3ff;--pink:#ff5c8a;--pinkink:light-dark(#d1215a,#ff7fa3)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Hanken Grotesk",system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+.band{padding-block:clamp(36px,5vw,72px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+nav{position:sticky;top:0;z-index:5;background:var(--sea);color:#fff;border-bottom:1px solid #1b3b5e}
+nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;padding:12px max(5vw,16px)}
+nav b{font-weight:700;margin-right:auto}
+nav a{text-decoration:none;color:#cfe6f7;font-size:15px;padding:8px 0}
+nav a:hover,nav a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.hero{background:var(--sea);color:#fff;padding-bottom:0}
+.hero h1{font-weight:300;font-size:clamp(44px,7.4vw,92px);line-height:1.02;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.hero .role{font-size:clamp(20px,2.4vw,28px);font-weight:600;color:var(--sky);margin:14px 0 0}
+.hero .lead{max-width:62ch;font-size:17px;color:#d6e8f6;margin:14px 0 0}
+.hero .top{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;align-items:end}
+.facts{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:12px;align-items:baseline;border-top:1px solid #24486f;padding-top:10px;font-size:15px;color:#d6e8f6}
+.facts strong{color:#fff;font-size:24px;font-weight:600;white-space:nowrap;min-width:2.2em}
+.fig{position:relative;height:clamp(360px,40vw,460px);margin-top:clamp(24px,3vw,40px)}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.fig svg text{font-family:"Hanken Grotesk",system-ui,sans-serif}
+.cap{font-size:14px;color:#9fc0da;padding:12px 0 22px;margin:0}
+h2{font-size:clamp(32px,4vw,46px);line-height:1.05;letter-spacing:-.02em;font-weight:600;margin:0 0 10px;text-wrap:balance}
+.intro{color:var(--soft);max-width:66ch;margin:0 0 28px;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:12px}
+.card h3{font-size:24px;line-height:1.15;margin:0;font-weight:600}
+.card .kind{color:var(--pinkink);font-weight:600;font-size:15px;margin:0}
+.card dl{margin:0;display:grid;gap:10px}
+.card dt{font-weight:700;font-size:15px}
+.card dd{margin:2px 0 0;color:var(--soft)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+.tags span{font-size:14px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--bg)}
+.feature{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;background:var(--sea);color:#fff;border-color:var(--sea)}
+.feature .kind{color:var(--pink)}
+.feature dd{color:#cfe2f2}
+.feature .tags span{background:transparent;border-color:#2b5480;color:#e6f2fb}
+.mods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:start}
+.mods div{border:1px solid #2b5480;border-radius:12px;padding:14px 16px;background:#0f2f52}
+.mods b{display:block;font-size:17px;color:#fff}
+.mods small{font-size:14px;color:#a9c8e0}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:3px solid var(--pink);list-style:none;margin:0;padding:0}
+.steps li{padding:18px 18px 0 0;position:relative}
+.steps li::before{content:"";position:absolute;top:-9px;left:0;width:15px;height:15px;border-radius:50%;background:var(--bg);border:3px solid var(--pink)}
+.steps b{display:block;font-size:19px;margin-bottom:4px}
+.steps p{margin:0;color:var(--soft)}
+.split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+.time{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.time li{padding:0 0 22px 22px;position:relative}
+.time li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--sky);border:2px solid var(--sea)}
+.time li.now::before{background:var(--pink)}
+.time .when{font-size:14px;color:var(--soft);white-space:nowrap}
+.time b{display:block;font-size:18px}
+.time p{margin:4px 0 0;color:var(--soft)}
+.skills{display:grid;gap:16px}
+.skills h3{font-size:18px;margin:0 0 8px}
+.alt{background:var(--panel);border-block:1px solid var(--line)}
+.contact{background:var(--sea);color:#fff}
+.contact h2{max-width:20ch}
+.contact p{color:#d6e8f6;max-width:60ch;font-size:17px}
+.contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.contact .row span{border:1px solid #2b5480;border-radius:999px;padding:8px 16px;font-size:15px}
+footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,16px);border-top:1px solid #1b3b5e}
+@media(max-width:900px){.feature{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:26px;border-top:0}.steps li{border-top:3px solid var(--pink)}}
+@media(max-width:760px){.hero .top,.split{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){nav a{font-size:14px}.fig{height:520px}.mods{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>Mustika D. Kharisma</b><a href="#proyek">Proyek</a><a href="#cara-kerja">Cara kerja</a><a href="#latar">Latar belakang</a><a href="#kontak">Kontak</a></div></nav>
+
+<header class="hero band">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Mustika Dwi Kharisma</h1>
+        <p class="role">AI Specialist dengan latar finance &amp; operasional</p>
+        <p class="lead">Saya membangun sistem dan alat berbasis AI untuk masalah bisnis yang saya tangani sendiri setiap hari: dari ERP perusahaan, bot layanan pelanggan, website, sampai produksi konten harian. Saya tidak berangkat dari teknologi, tapi dari kebutuhan tim dan angka di pembukuan.</p>
+      </div>
+      <ul class="facts">
+        <li><strong>1</strong>sistem ERP yang menyatukan HR, penjualan, accounting, dan service request</li>
+        <li><strong>6</strong>tim yang saya pimpin: sales, teknisi, gudang, admin, marketplace, driver</li>
+        <li><strong>3</strong>konten media sosial per hari, diproduksi dengan alur kerja AI</li>
+      </ul>
+    </div>
+    <div class="fig" id="map" role="img" aria-label="Peta sistem yang saya bangun: Kentford ERP di tengah, alat untuk pelanggan di kiri, mesin pemasaran di kanan"><svg id="mapsvg"></svg></div>
+    <p class="cap">Peta sistem yang saya bangun di PT Kentford Group Indonesia (distributor genset merek Singapower), 2024 sampai 2026.</p>
+  </div>
+</header>
+
+<section class="band" id="proyek">
+  <div class="wrap">
+    <h2>Yang sudah saya bangun</h2>
+    <p class="intro">Semua proyek di bawah saya kerjakan sendiri dengan bantuan AI, sambil tetap menjalankan peran manager dan finance. Data internal perusahaan tidak ditampilkan.</p>
+    <div class="grid">
+      <article class="card feature">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <p class="kind">Proyek utama · sistem internal</p>
+          <h3>Kentford ERP (kentford.cloud)</h3>
+          <dl>
+            <dt>Tujuan</dt><dd>Menyatukan pekerjaan HR, penjualan, accounting, dan service request perusahaan dalam satu sistem, tidak tersebar di banyak file dan aplikasi.</dd>
+            <dt>Peran saya</dt><dd>Merancang alur tiap modul dari kebutuhan divisi, lalu membangunnya sendiri dengan AI sebagai partner coding.</dd>
+            <dt>Dipakai untuk</dt><dd>Input orderan penjualan online oleh admin, input dan pengecekan jurnal akuntansi, pembukuan perusahaan, dan permintaan servis genset.</dd>
+          </dl>
+          <div class="tags"><span>Perancangan sistem</span><span>AI-assisted coding</span><span>Proses bisnis</span><span>Accounting</span></div>
+        </div>
+        <div class="mods">
+          <div><b>HR</b><small>Data karyawan dan administrasi SDM</small></div>
+          <div><b>Penjualan</b><small>Orderan, termasuk penjualan online</small></div>
+          <div><b>Accounting</b><small>Jurnal dan pembukuan perusahaan</small></div>
+          <div><b>Service request</b><small>Permintaan servis dari customer</small></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="kind">Layanan pelanggan</p>
+        <h3>Bot AI untuk customer</h3>
+        <dl>
+          <dt>Tujuan</dt><dd>Menjawab pertanyaan calon pembeli dan customer genset Singapower tanpa menunggu admin.</dd>
+          <dt>Peran saya</dt><dd>Membangun bot, menyusun pengetahuan produk yang dipakainya, dan mengatur cara bot menjawab.</dd>
+        </dl>
+        <div class="tags"><span>Chatbot</span><span>Prompt design</span><span>Customer service</span></div>
+      </article>
+
+      <article class="card">
+        <p class="kind">Website &amp; analitik</p>
+        <h3>singapower.com</h3>
+        <dl>
+          <dt>Tujuan</dt><dd>Website resmi merek genset Singapower untuk mendatangkan calon pembeli.</dd>
+          <dt>Peran saya</dt><dd>Membangun website dengan AI, menjalankan promosi, dan memantau hasilnya lewat Google Analytics.</dd>
+        </dl>
+        <div class="tags"><span>Web dengan AI</span><span>Google Analytics</span><span>Digital marketing</span></div>
+      </article>
+
+      <article class="card">
+        <p class="kind">Pemasaran</p>
+        <h3>Mesin konten &amp; iklan</h3>
+        <dl>
+          <dt>Tujuan</dt><dd>Menjaga merek tetap aktif di media sosial tanpa tim kreatif khusus.</dd>
+          <dt>Peran saya</dt><dd>Menyusun alur kerja AI untuk 3 konten per hari, membuat iklan media sosial, dan mendesain company profile perusahaan.</dd>
+        </dl>
+        <div class="tags"><span>Konten AI</span><span>Iklan media sosial</span><span>Desain</span></div>
+      </article>
+
+      <article class="card">
+        <p class="kind">Manajemen &amp; komunikasi</p>
+        <h3>SOP divisi dua bahasa</h3>
+        <dl>
+          <dt>Tujuan</dt><dd>Standar kerja serta aturan reward dan punishment untuk enam tim, yang bisa ditinjau langsung oleh pimpinan berbahasa Mandarin.</dd>
+          <dt>Peran saya</dt><dd>Menyusun isi dari masalah nyata tiap tim, lalu memakai AI untuk komunikasi dan dokumen Indonesia–Mandarin.</dd>
+        </dl>
+        <div class="tags"><span>SOP</span><span>AI untuk terjemahan</span><span>Manajemen tim</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="cara-kerja">
+  <div class="wrap">
+    <h2>Cara saya bekerja dengan AI</h2>
+    <p class="intro">Pola yang sama saya pakai di setiap proyek, dari ERP sampai konten harian.</p>
+    <ol class="steps">
+      <li><b>Mulai dari masalah</b><p>Saya memegang approval, petty cash, rekonsiliasi bank, dan memimpin enam tim, jadi saya tahu persis di mana pekerjaan macet.</p></li>
+      <li><b>Rancang alurnya</b><p>Petakan siapa yang input, siapa yang cek, dan data apa yang dibutuhkan sebelum menyentuh tools apa pun.</p></li>
+      <li><b>Bangun dengan AI</b><p>AI saya pakai sebagai partner untuk coding, menulis, desain, dan terjemahan, sehingga satu orang bisa menyelesaikan kerja satu tim.</p></li>
+      <li><b>Pakai dan perbaiki</b><p>Sistem langsung dipakai tim sehari-hari, dan masukan mereka jadi bahan perbaikan berikutnya.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="latar">
+  <div class="wrap split">
+    <div>
+      <h2>Latar belakang</h2>
+      <p class="intro">Pengalaman di operasional dan keuangan adalah alasan alat yang saya bangun benar-benar terpakai.</p>
+      <ul class="time">
+        <li class="now"><span class="when">Awal 2026 – Nov 2026</span><b>Manager, PT Kentford Group Indonesia</b><p>Memimpin tim sales, teknisi, gudang, admin, marketplace, dan driver. Menangani approval dan payment, petty cash, rekonsiliasi bank, laba kotor untuk HR, serta neraca perusahaan. Membangun Kentford ERP.</p></li>
+        <li><span class="when">Jun 2024 – awal 2026</span><b>Assistant Manager, PT Kentford Group Indonesia</b><p>Perusahaan PMA distributor genset Singapower. Mulai membangun bot AI, website singapower.com, dan alur konten.</p></li>
+        <li><span class="when">Sep 2023 – Mei 2024</span><b>Online Shop Administrator, PT Citra Niaga</b><p>Mengelola operasional toko online.</p></li>
+        <li><span class="when">Sedang berjalan</span><b>S1 Akuntansi, Universitas Terbuka</b></li>
+      </ul>
+    </div>
+    <div class="skills">
+      <div class="card"><h3>Kemampuan AI</h3><div class="tags" style="margin-top:0;padding-top:0"><span>Membangun aplikasi dengan AI</span><span>Chatbot</span><span>Prompt design</span><span>Otomasi alur kerja</span><span>Konten &amp; desain dengan AI</span><span>Terjemahan dengan AI</span></div></div>
+      <div class="card"><h3>Bisnis &amp; keuangan</h3><div class="tags" style="margin-top:0;padding-top:0"><span>Pembukuan &amp; jurnal</span><span>Rekonsiliasi bank</span><span>Neraca</span><span>Laba kotor</span><span>Petty cash</span><span>Manajemen tim</span></div></div>
+      <div class="card"><h3>Tools &amp; bahasa</h3><div class="tags" style="margin-top:0;padding-top:0"><span>Claude</span><span>Google Analytics</span><span>Lark</span><span>ERP</span><span>Indonesia</span><span>Inggris (lisan &amp; tulisan)</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band contact" id="kontak">
+  <div class="wrap">
+    <h2>Mencari peran AI Specialist atau AI Automation</h2>
+    <p>Saya paling cocok di tim yang butuh orang yang paham proses bisnis dan keuangan, sekaligus bisa langsung membangun solusinya dengan AI.</p>
+    <div class="row"><span>WhatsApp +62 858 1463 8997</span><span>mustikadwi6905@gmail.com</span><span>Jakarta Barat</span><span>Siap bergabung segera</span></div>
+  </div>
+</section>
+<footer><div class="wrap">Mustika Dwi Kharisma · Portofolio 2026</div></footer>
+
+<script>
+{
+const s=document.getElementById('mapsvg');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const tw=(t,sz)=>t.length*sz*0.56+28;
+const box=(x,y,label,sub,kind)=>{
+  const sz=kind==='hub'?20:15, w=Math.max(tw(label,sz),sub?tw(sub,13):0), h=sub?(kind==='hub'?66:54):42;
+  const fill=kind==='hub'?'#ff5c8a':kind==='mod'?'#123a63':'#0f3358';
+  const stroke=kind==='hub'?'#ff9fbb':'#3c6e9e';
+  const tc=kind==='hub'?'#2a0612':'#ffffff';
+  return {x,y,w,h,svg:`<rect x="${x-w/2+3}" y="${y-h/2+5}" width="${w}" height="${h}" rx="12" fill="#04162a" opacity=".55"/>
+  <rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="12" fill="${fill}" stroke="${stroke}"/>
+  <text x="${x}" y="${sub?y-4:y+5}" text-anchor="middle" font-size="${sz}" font-weight="700" fill="${tc}">${label}</text>`+
+  (sub?`<text x="${x}" y="${y+(kind==='hub'?20:16)}" text-anchor="middle" font-size="13" fill="${kind==='hub'?'#3d0a1b':'#a9c8e0'}">${sub}</text>`:'')};
+};
+const draw=()=>{
+  const W=s.clientWidth,H=s.clientHeight; if(!W||!H) return;
+  const narrow=W<620;
+  let L=[],R=[],hub,mods=[],heads=[];
+  if(!narrow){
+    const lx=W*0.14,rx=W*0.86,cx=W/2;
+    heads=[[lx,'Pelanggan'],[cx,'Operasional'],[rx,'Pemasaran']].map(([x,t])=>`<text x="${x}" y="26" text-anchor="middle" font-size="14" font-weight="600" fill="#8fd3ff">${t}</text>`);
+    L=[box(lx,H*0.36,'Bot AI','layanan customer'),box(lx,H*0.68,'singapower.com','website + analitik')];
+    R=[box(rx,H*0.26,'Konten harian','3 per hari'),box(rx,H*0.52,'Iklan medsos'),box(rx,H*0.76,'Company profile')];
+    hub=box(cx,H*0.32,'Kentford ERP','kentford.cloud','hub');
+    const my=H*0.66, gap=Math.min(150,W*0.12);
+    const mx=[cx-gap*1.5,cx-gap*0.5,cx+gap*0.5,cx+gap*1.5];
+    const labs=W<900?['HR','Jual','Akun','Servis']:['HR','Penjualan','Accounting','Servis'];
+    mods=labs.map((t,i)=>box(mx[i],my+(i%2?34:0),t,'', 'mod'));
+  }else{
+    const cx=W/2;
+    heads=[[24,'Pelanggan',H*0.05],[24,'Operasional',H*0.33],[24,'Pemasaran',H*0.79]].map(([x,t,y])=>`<text x="${x}" y="${y}" font-size="14" font-weight="600" fill="#8fd3ff">${t}</text>`);
+    L=[box(W*0.28,H*0.15,'Bot AI'),box(W*0.72,H*0.15,'Website')];
+    hub=box(cx,H*0.44,'Kentford ERP','kentford.cloud','hub');
+    mods=['HR','Jual','Akun','Servis'].map((t,i)=>box(W*(0.14+i*0.24),H*0.62,t,'','mod'));
+    R=[box(W*0.2,H*0.9,'Konten'),box(W*0.5,H*0.9,'Iklan'),box(W*0.8,H*0.9,'Profil')];
+  }
+  const paths=[];
+  const link=(a,b,main)=>{
+    let d;
+    if(!narrow){
+      const ax=a.x+(b.x>a.x?a.w/2:-a.w/2), bx=b.x+(a.x>b.x?b.w/2:-b.w/2);
+      const m=(ax+bx)/2; d=`M${ax},${a.y} C${m},${a.y} ${m},${b.y} ${bx},${b.y}`;
+    }else{
+      const ay=a.y+(b.y>a.y?a.h/2:-a.h/2), by=b.y+(a.y>b.y?b.h/2:-b.h/2);
+      if(b.y-a.y>H*0.3){const k=H*0.72;d=`M${a.x},${ay} L${a.x},${k} C${a.x},${(k+by)/2} ${b.x},${(k+by)/2} ${b.x},${by}`;}
+      else{const m=(ay+by)/2; d=`M${a.x},${ay} C${a.x},${m} ${b.x},${m} ${b.x},${by}`;}
+    }
+    paths.push(d);
+    return `<path d="${d}" fill="none" stroke="${main?'#ff5c8a':'#4f86b8'}" stroke-width="${main?2.5:1.8}" ${main?'':'stroke-dasharray="5 6"'} opacity=".9"/>`;
+  };
+  const vlink=(a,b)=>{const y1=a.y+a.h/2,y2=b.y-b.h/2,m=(y1+y2)/2;const d=`M${a.x},${y1} C${a.x},${m} ${b.x},${m} ${b.x},${y2}`;paths.push(d);return `<path d="${d}" fill="none" stroke="#8fd3ff" stroke-width="2" opacity=".8"/>`};
+  let lines=L.map(n=>link(n,hub,true)).join('')+R.map(n=>link(hub,n,false)).join('')+mods.map(m=>vlink(hub,m)).join('');
+  let grid='';
+  for(let x=0;x<W;x+=40) grid+=`<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="#ffffff" opacity=".04"/>`;
+  for(let y=0;y<H;y+=40) grid+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#ffffff" opacity=".04"/>`;
+  const glow=`<circle cx="${hub.x}" cy="${hub.y}" r="${Math.min(W,H)*0.32}" fill="url(#g)"/>`;
+  const tok=reduce?'':paths.slice(0,2).map((d,i)=>`<circle r="5" fill="#ffffff"><animateMotion dur="${3.2+i}s" repeatCount="indefinite" path="${d}"/></circle>`).join('');
+  s.innerHTML=`<defs><radialGradient id="g"><stop offset="0" stop-color="#ff5c8a" stop-opacity=".22"/><stop offset="1" stop-color="#ff5c8a" stop-opacity="0"/></radialGradient></defs>`+
+    grid+glow+heads.join('')+lines+tok+[...L,...R,...mods,hub].map(n=>n.svg).join('');
+};
+const ro=new ResizeObserver(draw); ro.observe(s);
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
+}
+</script>
+</body>
+</html>
