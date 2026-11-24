@@ -6,28 +6,33 @@
 <title>Portofolio Mustika Dwi Kharisma</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 /* VOICE everyday-professional: a business operator who builds her own AI tools, calm and confident
    IDEA an atlas plate of one company's operations: the systems she built, mapped as one connected network
    PICTURE a live system map: Kentford ERP at the centre, customer tools on the left, marketing engine on the right, a token travelling the routes
    COLOUR deep sea #0a2540 band, sky #8fd3ff, white, signal pink #ff5c8a for what she built
-   TYPE Hanken Grotesk 300 very large for the name + Hanken Grotesk for text
-   LAYOUT name across the top of the sea band, map full width beneath; then projects (ERP wide, four in 2x2), method, background, contact; phone stacks title, map, content */
-:root{color-scheme:light dark;--bg:light-dark(#ffffff,#07182b);--ink:light-dark(#0a2540,#e8f2fb);--soft:light-dark(#46607a,#9fb6cc);--line:light-dark(#d5e1ec,#1d3a58);--panel:light-dark(#f3f8fc,#0c2238);--sea:#0a2540;--sky:#8fd3ff;--pink:#ff5c8a;--pinkink:light-dark(#d1215a,#ff7fa3)}
+   TYPE Hanken Grotesk 300 very large for the name + Hanken Grotesk for text (Noto Sans SC for Chinese)
+   LAYOUT name across the top of the sea band, map full width beneath; then projects, method, background, contact; phone stacks title, map, content */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#07182b);--ink:light-dark(#0a2540,#e8f2fb);--soft:light-dark(#46607a,#9fb6cc);--line:light-dark(#d5e1ec,#1d3a58);--panel:light-dark(#f3f8fc,#0c2238);--sea:#0a2540;--sky:#8fd3ff;--pink:#ff5c8a;--pinkink:light-dark(#d1215a,#ff7fa3);--font:"Hanken Grotesk",system-ui,sans-serif}
 :root[data-theme=light]{color-scheme:light}
 :root[data-theme=dark]{color-scheme:dark}
+html[lang=zh]{--font:"Hanken Grotesk","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
 *{box-sizing:border-box;min-width:0}
 html{scroll-padding-top:72px;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Hanken Grotesk",system-ui,sans-serif;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--font);overflow-x:clip}
 a{color:inherit}
 .band{padding-block:clamp(36px,5vw,72px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
 .wrap{max-width:1240px;margin:0 auto}
 nav{position:sticky;top:0;z-index:5;background:var(--sea);color:#fff;border-bottom:1px solid #1b3b5e}
-nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;padding:12px max(5vw,16px)}
+nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;padding:10px max(5vw,16px)}
 nav b{font-weight:700;margin-right:auto}
 nav a{text-decoration:none;color:#cfe6f7;font-size:15px;padding:8px 0}
 nav a:hover,nav a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.lang{display:flex;border:1px solid #2b5480;border-radius:999px;padding:3px;gap:2px}
+.lang button{font:600 14px/1 var(--font);color:#cfe6f7;background:transparent;border:0;border-radius:999px;padding:0 14px;min-height:36px;min-width:44px;cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--pink);color:#2a0612}
+.lang button:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
 .hero{background:var(--sea);color:#fff;padding-bottom:0}
 .hero h1{font-weight:300;font-size:clamp(44px,7.4vw,92px);line-height:1.02;letter-spacing:-.03em;margin:0;text-wrap:balance}
 .hero .role{font-size:clamp(20px,2.4vw,28px);font-weight:600;color:var(--sky);margin:14px 0 0}
@@ -38,7 +43,7 @@ nav a:hover,nav a:focus-visible{color:#fff;text-decoration:underline;text-underl
 .facts strong{color:#fff;font-size:24px;font-weight:600;white-space:nowrap;min-width:2.2em}
 .fig{position:relative;height:clamp(360px,40vw,460px);margin-top:clamp(24px,3vw,40px)}
 .fig>svg{position:absolute;inset:0;width:100%;height:100%}
-.fig svg text{font-family:"Hanken Grotesk",system-ui,sans-serif}
+.fig svg text{font-family:var(--font)}
 .cap{font-size:14px;color:#9fc0da;padding:12px 0 22px;margin:0}
 h2{font-size:clamp(32px,4vw,46px);line-height:1.05;letter-spacing:-.02em;font-weight:600;margin:0 0 10px;text-wrap:balance}
 .intro{color:var(--soft);max-width:66ch;margin:0 0 28px;font-size:17px}
@@ -55,8 +60,10 @@ h2{font-size:clamp(32px,4vw,46px);line-height:1.05;letter-spacing:-.02em;font-we
 .feature .kind{color:var(--pink)}
 .feature dd{color:#cfe2f2}
 .feature .tags span{background:transparent;border-color:#2b5480;color:#e6f2fb}
+.fcol{display:flex;flex-direction:column;gap:12px}
 .mods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:start}
 .mods div{border:1px solid #2b5480;border-radius:12px;padding:14px 16px;background:#0f2f52}
+.mods div:last-child{grid-column:1/-1}
 .mods b{display:block;font-size:17px;color:#fff}
 .mods small{font-size:14px;color:#a9c8e0}
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:3px solid var(--pink);list-style:none;margin:0;padding:0}
@@ -74,103 +81,106 @@ h2{font-size:clamp(32px,4vw,46px);line-height:1.05;letter-spacing:-.02em;font-we
 .time p{margin:4px 0 0;color:var(--soft)}
 .skills{display:grid;gap:16px}
 .skills h3{font-size:18px;margin:0 0 8px}
+.skills .tags{margin-top:0;padding-top:0}
 .alt{background:var(--panel);border-block:1px solid var(--line)}
 .contact{background:var(--sea);color:#fff}
-.contact h2{max-width:20ch}
+.contact h2{max-width:22ch}
 .contact p{color:#d6e8f6;max-width:60ch;font-size:17px}
 .contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
 .contact .row span{border:1px solid #2b5480;border-radius:999px;padding:8px 16px;font-size:15px}
 footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,16px);border-top:1px solid #1b3b5e}
 @media(max-width:900px){.feature{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:26px;border-top:0}.steps li{border-top:3px solid var(--pink)}}
 @media(max-width:760px){.hero .top,.split{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:600px){nav a{font-size:14px}.fig{height:520px}.mods{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){nav b{flex-basis:100%}nav a{font-size:14px}.fig{height:520px}.mods{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<nav><div class="wrap"><b>Mustika D. Kharisma</b><a href="#proyek">Proyek</a><a href="#cara-kerja">Cara kerja</a><a href="#latar">Latar belakang</a><a href="#kontak">Kontak</a></div></nav>
+<nav><div class="wrap"><b>Mustika D. Kharisma</b><a href="#proyek" data-k="n1">Proyek</a><a href="#cara-kerja" data-k="n2">Cara kerja</a><a href="#latar" data-k="n3">Latar belakang</a><a href="#kontak" data-k="n4">Kontak</a>
+<div class="lang" role="group" aria-label="Bahasa / Language / 语言"><button type="button" id="l-id" data-l="id" aria-pressed="true">ID</button><button type="button" id="l-en" data-l="en" aria-pressed="false">EN</button><button type="button" id="l-zh" data-l="zh" aria-pressed="false">中文</button></div></div></nav>
 
 <header class="hero band">
   <div class="wrap">
     <div class="top">
       <div>
         <h1>Mustika Dwi Kharisma</h1>
-        <p class="role">AI Specialist dengan latar finance &amp; operasional</p>
-        <p class="lead">Saya membangun sistem dan alat berbasis AI untuk masalah bisnis yang saya tangani sendiri setiap hari: dari ERP perusahaan, bot layanan pelanggan, website, sampai produksi konten harian. Saya tidak berangkat dari teknologi, tapi dari kebutuhan tim dan angka di pembukuan.</p>
+        <p class="role" data-k="role">AI Specialist dengan latar finance &amp; operasional</p>
+        <p class="lead" data-k="lead">Saya membangun sistem dan alat berbasis AI untuk masalah bisnis yang saya tangani sendiri setiap hari: dari ERP perusahaan, bot layanan pelanggan, website, sampai produksi konten harian. Saya tidak berangkat dari teknologi, tapi dari kebutuhan tim dan angka di pembukuan.</p>
       </div>
       <ul class="facts">
-        <li><strong>1</strong>sistem ERP yang menyatukan HR, penjualan, accounting, dan service request</li>
-        <li><strong>6</strong>tim yang saya pimpin: sales, teknisi, gudang, admin, marketplace, driver</li>
-        <li><strong>3</strong>konten media sosial per hari, diproduksi dengan alur kerja AI</li>
+        <li><strong>1</strong><span data-k="f1">sistem ERP yang menyatukan HR, penjualan, accounting, inventory, dan service request</span></li>
+        <li><strong>6</strong><span data-k="f2">tim yang saya pimpin: sales, teknisi, gudang, admin, marketplace, driver</span></li>
+        <li><strong>3</strong><span data-k="f3">konten media sosial per hari, diproduksi dengan alur kerja AI</span></li>
       </ul>
     </div>
-    <div class="fig" id="map" role="img" aria-label="Peta sistem yang saya bangun: Kentford ERP di tengah, alat untuk pelanggan di kiri, mesin pemasaran di kanan"><svg id="mapsvg"></svg></div>
-    <p class="cap">Peta sistem yang saya bangun di PT Kentford Group Indonesia (distributor genset merek Singapower), 2024 sampai 2026.</p>
+    <div class="fig" id="map" role="img" aria-label="Peta sistem: Kentford ERP di tengah, alat untuk pelanggan di kiri, mesin pemasaran di kanan"><svg id="mapsvg"></svg></div>
+    <p class="cap" data-k="cap">Peta sistem yang saya bangun di PT Kentford Group Indonesia (distributor genset merek Singapower), 2024 sampai 2026.</p>
   </div>
 </header>
 
 <section class="band" id="proyek">
   <div class="wrap">
-    <h2>Yang sudah saya bangun</h2>
-    <p class="intro">Semua proyek di bawah saya kerjakan sendiri dengan bantuan AI, sambil tetap menjalankan peran manager dan finance. Data internal perusahaan tidak ditampilkan.</p>
+    <h2 data-k="pH">Yang sudah saya bangun</h2>
+    <p class="intro" data-k="pI">Semua proyek di bawah saya kerjakan sendiri dengan bantuan AI, sambil tetap menjalankan peran manager dan finance. Data internal perusahaan tidak ditampilkan.</p>
     <div class="grid">
       <article class="card feature">
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <p class="kind">Proyek utama · sistem internal</p>
+        <div class="fcol">
+          <p class="kind" data-k="eK">Proyek utama · sistem internal</p>
           <h3>Kentford ERP (kentford.cloud)</h3>
           <dl>
-            <dt>Tujuan</dt><dd>Menyatukan pekerjaan HR, penjualan, accounting, dan service request perusahaan dalam satu sistem, tidak tersebar di banyak file dan aplikasi.</dd>
-            <dt>Peran saya</dt><dd>Merancang alur tiap modul dari kebutuhan divisi, lalu membangunnya sendiri dengan AI sebagai partner coding.</dd>
-            <dt>Dipakai untuk</dt><dd>Input orderan penjualan online oleh admin, input dan pengecekan jurnal akuntansi, pembukuan perusahaan, dan permintaan servis genset.</dd>
+            <dt data-k="tj">Tujuan</dt><dd data-k="eT">Menyatukan HR, penjualan, accounting, inventory, dan service request perusahaan dalam satu sistem, tidak tersebar di banyak file dan aplikasi.</dd>
+            <dt data-k="pr">Peran saya</dt><dd data-k="eP">Merancang alur tiap modul dari kebutuhan divisi, lalu membangunnya sendiri dengan AI sebagai partner coding.</dd>
+            <dt data-k="du">Dipakai untuk</dt><dd data-k="eU">Input orderan penjualan online oleh admin, input dan pengecekan jurnal akuntansi, pembukuan perusahaan, dan permintaan servis genset.</dd>
           </dl>
-          <div class="tags"><span>Perancangan sistem</span><span>AI-assisted coding</span><span>Proses bisnis</span><span>Accounting</span></div>
+          <div class="tags"><span data-k="et1">Perancangan sistem</span><span data-k="et2">AI-assisted coding</span><span data-k="et3">Proses bisnis</span><span data-k="et4">Accounting</span></div>
         </div>
         <div class="mods">
-          <div><b>HR</b><small>Data karyawan dan administrasi SDM</small></div>
-          <div><b>Penjualan</b><small>Orderan, termasuk penjualan online</small></div>
-          <div><b>Accounting</b><small>Jurnal dan pembukuan perusahaan</small></div>
-          <div><b>Service request</b><small>Permintaan servis dari customer</small></div>
+          <div><b data-k="m1">HR</b><small data-k="m1s">Data karyawan dan administrasi SDM</small></div>
+          <div><b data-k="m2">Penjualan</b><small data-k="m2s">Orderan, termasuk penjualan online</small></div>
+          <div><b data-k="m3">Accounting</b><small data-k="m3s">Jurnal dan pembukuan perusahaan</small></div>
+          <div><b data-k="m4">Inventory</b><small data-k="m4s">Stok barang di gudang</small></div>
+          <div><b data-k="m5">Service request</b><small data-k="m5s">Permintaan servis dari customer</small></div>
         </div>
       </article>
 
       <article class="card">
-        <p class="kind">Layanan pelanggan</p>
-        <h3>Bot AI untuk customer</h3>
+        <p class="kind" data-k="bK">Layanan pelanggan</p>
+        <h3 data-k="bH">Bot AI untuk customer</h3>
         <dl>
-          <dt>Tujuan</dt><dd>Menjawab pertanyaan calon pembeli dan customer genset Singapower tanpa menunggu admin.</dd>
-          <dt>Peran saya</dt><dd>Membangun bot, menyusun pengetahuan produk yang dipakainya, dan mengatur cara bot menjawab.</dd>
+          <dt data-k="tj">Tujuan</dt><dd data-k="bT">Menjawab pertanyaan calon pembeli dan customer genset Singapower tanpa menunggu admin.</dd>
+          <dt data-k="pr">Peran saya</dt><dd data-k="bP">Membangun bot, menyusun pengetahuan produk yang dipakainya, dan mengatur cara bot menjawab.</dd>
         </dl>
-        <div class="tags"><span>Chatbot</span><span>Prompt design</span><span>Customer service</span></div>
+        <div class="tags"><span data-k="bt1">Chatbot</span><span data-k="bt2">Prompt design</span><span data-k="bt3">Customer service</span></div>
       </article>
 
       <article class="card">
-        <p class="kind">Website &amp; analitik</p>
+        <p class="kind" data-k="wK">Website &amp; analitik</p>
         <h3>singapower.com</h3>
         <dl>
-          <dt>Tujuan</dt><dd>Website resmi merek genset Singapower untuk mendatangkan calon pembeli.</dd>
-          <dt>Peran saya</dt><dd>Membangun website dengan AI, menjalankan promosi, dan memantau hasilnya lewat Google Analytics.</dd>
+          <dt data-k="tj">Tujuan</dt><dd data-k="wT">Website resmi merek genset Singapower untuk mendatangkan calon pembeli.</dd>
+          <dt data-k="pr">Peran saya</dt><dd data-k="wP">Membangun website dengan AI, menjalankan promosi, dan memantau hasilnya lewat Google Analytics.</dd>
         </dl>
-        <div class="tags"><span>Web dengan AI</span><span>Google Analytics</span><span>Digital marketing</span></div>
+        <div class="tags"><span data-k="wt1">Web dengan AI</span><span>Google Analytics</span><span data-k="wt3">Digital marketing</span></div>
       </article>
 
       <article class="card">
-        <p class="kind">Pemasaran</p>
-        <h3>Mesin konten &amp; iklan</h3>
+        <p class="kind" data-k="kK">Pemasaran</p>
+        <h3 data-k="kH">Mesin konten &amp; iklan</h3>
         <dl>
-          <dt>Tujuan</dt><dd>Menjaga merek tetap aktif di media sosial tanpa tim kreatif khusus.</dd>
-          <dt>Peran saya</dt><dd>Menyusun alur kerja AI untuk 3 konten per hari, membuat iklan media sosial, dan mendesain company profile perusahaan.</dd>
+          <dt data-k="tj">Tujuan</dt><dd data-k="kT">Menjaga merek tetap aktif di media sosial tanpa tim kreatif khusus.</dd>
+          <dt data-k="pr">Peran saya</dt><dd data-k="kP">Menyusun alur kerja AI untuk 3 konten per hari, menjalankan iklan Meta Ads, dan mendesain company profile perusahaan.</dd>
         </dl>
-        <div class="tags"><span>Konten AI</span><span>Iklan media sosial</span><span>Desain</span></div>
+        <div class="tags"><span data-k="kt1">Konten AI</span><span>Meta Ads</span><span data-k="kt3">Desain</span></div>
       </article>
 
       <article class="card">
-        <p class="kind">Manajemen &amp; komunikasi</p>
-        <h3>SOP divisi dua bahasa</h3>
+        <p class="kind" data-k="sK">Manajemen &amp; komunikasi</p>
+        <h3 data-k="sH">SOP divisi dua bahasa</h3>
         <dl>
-          <dt>Tujuan</dt><dd>Standar kerja serta aturan reward dan punishment untuk enam tim, yang bisa ditinjau langsung oleh pimpinan berbahasa Mandarin.</dd>
-          <dt>Peran saya</dt><dd>Menyusun isi dari masalah nyata tiap tim, lalu memakai AI untuk komunikasi dan dokumen Indonesia–Mandarin.</dd>
+          <dt data-k="tj">Tujuan</dt><dd data-k="sT">Standar kerja serta aturan reward dan punishment untuk enam tim, yang bisa ditinjau langsung oleh pimpinan berbahasa Mandarin.</dd>
+          <dt data-k="pr">Peran saya</dt><dd data-k="sP">Menyusun isi dari masalah nyata tiap tim, lalu memakai AI untuk komunikasi dan dokumen Indonesia–Mandarin.</dd>
         </dl>
-        <div class="tags"><span>SOP</span><span>AI untuk terjemahan</span><span>Manajemen tim</span></div>
+        <div class="tags"><span>SOP</span><span data-k="st2">AI untuk terjemahan</span><span data-k="st3">Manajemen tim</span></div>
       </article>
     </div>
   </div>
@@ -178,13 +188,13 @@ footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,1
 
 <section class="band alt" id="cara-kerja">
   <div class="wrap">
-    <h2>Cara saya bekerja dengan AI</h2>
-    <p class="intro">Pola yang sama saya pakai di setiap proyek, dari ERP sampai konten harian.</p>
+    <h2 data-k="cH">Cara saya bekerja dengan AI</h2>
+    <p class="intro" data-k="cI">Pola yang sama saya pakai di setiap proyek, dari ERP sampai konten harian.</p>
     <ol class="steps">
-      <li><b>Mulai dari masalah</b><p>Saya memegang approval, petty cash, rekonsiliasi bank, dan memimpin enam tim, jadi saya tahu persis di mana pekerjaan macet.</p></li>
-      <li><b>Rancang alurnya</b><p>Petakan siapa yang input, siapa yang cek, dan data apa yang dibutuhkan sebelum menyentuh tools apa pun.</p></li>
-      <li><b>Bangun dengan AI</b><p>AI saya pakai sebagai partner untuk coding, menulis, desain, dan terjemahan, sehingga satu orang bisa menyelesaikan kerja satu tim.</p></li>
-      <li><b>Pakai dan perbaiki</b><p>Sistem langsung dipakai tim sehari-hari, dan masukan mereka jadi bahan perbaikan berikutnya.</p></li>
+      <li><b data-k="c1">Mulai dari masalah</b><p data-k="c1p">Saya memegang approval, petty cash, rekonsiliasi bank, dan memimpin enam tim, jadi saya tahu persis di mana pekerjaan macet.</p></li>
+      <li><b data-k="c2">Rancang alurnya</b><p data-k="c2p">Petakan siapa yang input, siapa yang cek, dan data apa yang dibutuhkan sebelum menyentuh tools apa pun.</p></li>
+      <li><b data-k="c3">Bangun dengan AI</b><p data-k="c3p">AI saya pakai sebagai partner untuk coding, menulis, desain, dan terjemahan, sehingga satu orang bisa menyelesaikan kerja satu tim.</p></li>
+      <li><b data-k="c4">Pakai dan perbaiki</b><p data-k="c4p">Sistem langsung dipakai tim sehari-hari, dan masukan mereka jadi bahan perbaikan berikutnya.</p></li>
     </ol>
   </div>
 </section>
@@ -192,37 +202,110 @@ footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,1
 <section class="band" id="latar">
   <div class="wrap split">
     <div>
-      <h2>Latar belakang</h2>
-      <p class="intro">Pengalaman di operasional dan keuangan adalah alasan alat yang saya bangun benar-benar terpakai.</p>
+      <h2 data-k="lH">Latar belakang</h2>
+      <p class="intro" data-k="lI">Pengalaman di operasional dan keuangan adalah alasan alat yang saya bangun benar-benar terpakai.</p>
       <ul class="time">
-        <li class="now"><span class="when">Awal 2026 – Nov 2026</span><b>Manager, PT Kentford Group Indonesia</b><p>Memimpin tim sales, teknisi, gudang, admin, marketplace, dan driver. Menangani approval dan payment, petty cash, rekonsiliasi bank, laba kotor untuk HR, serta neraca perusahaan. Membangun Kentford ERP.</p></li>
-        <li><span class="when">Jun 2024 – awal 2026</span><b>Assistant Manager, PT Kentford Group Indonesia</b><p>Perusahaan PMA distributor genset Singapower. Mulai membangun bot AI, website singapower.com, dan alur konten.</p></li>
-        <li><span class="when">Sep 2023 – Mei 2024</span><b>Online Shop Administrator, PT Citra Niaga</b><p>Mengelola operasional toko online.</p></li>
-        <li><span class="when">Sedang berjalan</span><b>S1 Akuntansi, Universitas Terbuka</b></li>
+        <li class="now"><span class="when" data-k="t1w">Awal 2026 – Nov 2026</span><b data-k="t1b">Manager, PT Kentford Group Indonesia</b><p data-k="t1p">Memimpin tim sales, teknisi, gudang, admin, marketplace, dan driver. Menangani approval dan payment, petty cash, rekonsiliasi bank, laba kotor untuk HR, serta neraca perusahaan. Membangun Kentford ERP.</p></li>
+        <li><span class="when" data-k="t2w">Jun 2024 – awal 2026</span><b data-k="t2b">Assistant Manager, PT Kentford Group Indonesia</b><p data-k="t2p">Perusahaan PMA distributor genset Singapower. Mulai membangun bot AI, website singapower.com, dan alur konten.</p></li>
+        <li><span class="when" data-k="t3w">Sedang berjalan</span><b data-k="t3b">S1 Akuntansi, Universitas Terbuka</b></li>
       </ul>
     </div>
     <div class="skills">
-      <div class="card"><h3>Kemampuan AI</h3><div class="tags" style="margin-top:0;padding-top:0"><span>Membangun aplikasi dengan AI</span><span>Chatbot</span><span>Prompt design</span><span>Otomasi alur kerja</span><span>Konten &amp; desain dengan AI</span><span>Terjemahan dengan AI</span></div></div>
-      <div class="card"><h3>Bisnis &amp; keuangan</h3><div class="tags" style="margin-top:0;padding-top:0"><span>Pembukuan &amp; jurnal</span><span>Rekonsiliasi bank</span><span>Neraca</span><span>Laba kotor</span><span>Petty cash</span><span>Manajemen tim</span></div></div>
-      <div class="card"><h3>Tools &amp; bahasa</h3><div class="tags" style="margin-top:0;padding-top:0"><span>Claude</span><span>Google Analytics</span><span>Lark</span><span>ERP</span><span>Indonesia</span><span>Inggris (lisan &amp; tulisan)</span></div></div>
+      <div class="card"><h3 data-k="g1">Kemampuan AI</h3><div class="tags"><span data-k="g1a">Membangun aplikasi dengan AI</span><span data-k="g1b">Chatbot</span><span data-k="g1c">Prompt design</span><span data-k="g1d">Otomasi alur kerja</span><span data-k="g1e">Konten &amp; desain dengan AI</span><span data-k="g1f">Terjemahan dengan AI</span></div></div>
+      <div class="card"><h3 data-k="g2">Bisnis &amp; keuangan</h3><div class="tags"><span data-k="g2a">Pembukuan &amp; jurnal</span><span data-k="g2b">Rekonsiliasi bank</span><span data-k="g2c">Neraca</span><span data-k="g2d">Laba kotor</span><span data-k="g2e">Petty cash</span><span data-k="g2f">Manajemen tim</span></div></div>
+      <div class="card"><h3 data-k="g3">Tools &amp; bahasa</h3><div class="tags"><span>Claude</span><span>Google Analytics</span><span>Meta Ads</span><span>Lark</span><span>ERP</span><span data-k="g3a">Indonesia</span><span data-k="g3b">Inggris (lisan &amp; tulisan)</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="band contact" id="kontak">
   <div class="wrap">
-    <h2>Mencari peran AI Specialist atau AI Automation</h2>
-    <p>Saya paling cocok di tim yang butuh orang yang paham proses bisnis dan keuangan, sekaligus bisa langsung membangun solusinya dengan AI.</p>
-    <div class="row"><span>WhatsApp +62 858 1463 8997</span><span>mustikadwi6905@gmail.com</span><span>Jakarta Barat</span><span>Siap bergabung segera</span></div>
+    <h2 data-k="kkH">Mencari peran AI Specialist atau AI Automation</h2>
+    <p data-k="kkP">Saya paling cocok di tim yang butuh orang yang paham proses bisnis dan keuangan, sekaligus bisa langsung membangun solusinya dengan AI.</p>
+    <div class="row"><span>WhatsApp +62 858 1463 8997</span><span>mustikadwi6905@gmail.com</span><span data-k="loc">Jakarta Barat</span><span data-k="av">Siap bergabung segera</span></div>
   </div>
 </section>
-<footer><div class="wrap">Mustika Dwi Kharisma · Portofolio 2026</div></footer>
+<footer><div class="wrap" data-k="ft">Mustika Dwi Kharisma · Portofolio 2026</div></footer>
 
 <script>
 {
+const EN={n1:"Projects",n2:"How I work",n3:"Background",n4:"Contact",
+role:"AI Specialist with a finance & operations background",
+lead:"I build AI-powered systems and tools for the business problems I handle myself every day: a company ERP, a customer service bot, a website, and daily content production. I don’t start from technology. I start from what the team needs and what the books say.",
+f1:"ERP system bringing HR, sales, accounting, inventory and service requests together",
+f2:"teams I lead: sales, technicians, warehouse, admin, marketplace, drivers",
+f3:"social media posts a day, produced with an AI workflow",
+cap:"Map of the systems I built at PT Kentford Group Indonesia (distributor of Singapower generators), 2024 to 2026.",
+pH:"What I’ve built",pI:"I built every project below myself with AI, while still running my manager and finance duties. No internal company data is shown.",
+eK:"Main project · internal system",tj:"Goal",pr:"My role",du:"Used for",
+eT:"Bring the company’s HR, sales, accounting, inventory and service requests into one system instead of scattered files and apps.",
+eP:"Designed each module’s workflow from what each division needed, then built it myself with AI as my coding partner.",
+eU:"Admin entering online sales orders, entering and checking accounting journals, company bookkeeping, and generator service requests.",
+et1:"System design",et2:"AI-assisted coding",et3:"Business processes",et4:"Accounting",
+m1:"HR",m1s:"Employee data and HR administration",m2:"Sales",m2s:"Orders, including online sales",m3:"Accounting",m3s:"Journals and company books",m4:"Inventory",m4s:"Warehouse stock",m5:"Service request",m5s:"Service requests from customers",
+bK:"Customer service",bH:"AI bot for customers",bT:"Answer questions from Singapower generator prospects and customers without waiting for an admin.",bP:"Built the bot, prepared the product knowledge it uses, and set how it answers.",bt1:"Chatbot",bt2:"Prompt design",bt3:"Customer service",
+wK:"Website & analytics",wT:"The official website of the Singapower generator brand, built to bring in buyers.",wP:"Built the website with AI, ran its promotion, and tracked results in Google Analytics.",wt1:"AI-built web",wt3:"Digital marketing",
+kK:"Marketing",kH:"Content & ads engine",kT:"Keep the brand active on social media without a dedicated creative team.",kP:"Set up an AI workflow for 3 posts a day, ran Meta Ads campaigns, and designed the company profile.",kt1:"AI content",kt3:"Design",
+sK:"Management & communication",sH:"Bilingual division SOPs",sT:"Work standards and reward-and-penalty rules for six teams, readable directly by Mandarin-speaking management.",sP:"Wrote the content from each team’s real problems, then used AI for Indonesian–Mandarin documents and communication.",st2:"AI translation",st3:"Team management",
+cH:"How I work with AI",cI:"The same pattern runs through every project, from the ERP to daily content.",
+c1:"Start from the problem",c1p:"I handle approvals, petty cash and bank reconciliation, and I lead six teams, so I know exactly where work gets stuck.",
+c2:"Design the flow",c2p:"Map who enters data, who checks it and what data is needed before touching any tool.",
+c3:"Build with AI",c3p:"I use AI as a partner for coding, writing, design and translation, so one person can deliver a team’s worth of work.",
+c4:"Use it and improve it",c4p:"Systems go straight into the team’s daily work, and their feedback drives the next round of improvements.",
+lH:"Background",lI:"My operations and finance experience is why the tools I build actually get used.",
+t1w:"Early 2026 – Nov 2026",t1b:"Manager, PT Kentford Group Indonesia",t1p:"Led the sales, technician, warehouse, admin, marketplace and driver teams. Handled approvals and payments, petty cash, bank reconciliation, gross profit reports for HR, and the company balance sheet. Built Kentford ERP.",
+t2w:"Jun 2024 – early 2026",t2b:"Assistant Manager, PT Kentford Group Indonesia",t2p:"Foreign-owned (PMA) distributor of Singapower generators. Started building the AI bot, the singapower.com website and the content workflow.",
+t3w:"In progress",t3b:"Bachelor of Accounting, Universitas Terbuka",
+g1:"AI skills",g1a:"Building apps with AI",g1b:"Chatbots",g1c:"Prompt design",g1d:"Workflow automation",g1e:"AI content & design",g1f:"AI translation",
+g2:"Business & finance",g2a:"Bookkeeping & journals",g2b:"Bank reconciliation",g2c:"Balance sheet",g2d:"Gross profit",g2e:"Petty cash",g2f:"Team management",
+g3:"Tools & languages",g3a:"Indonesian",g3b:"English (spoken & written)",
+kkH:"Looking for an AI Specialist or AI Automation role",kkP:"I fit best in a team that needs someone who understands business processes and finance, and can build the solution directly with AI.",
+loc:"West Jakarta",av:"Available immediately",ft:"Mustika Dwi Kharisma · Portfolio 2026",
+mC:"Customers",mO:"Operations",mM:"Marketing",mBot:"AI bot",mBotS:"customer service",mWebS:"website + analytics",mCon:"Daily content",mConS:"3 per day",mAds:"Meta Ads",mProf:"Company profile",mod:["HR","Sales","Accounting","Inventory","Service"],modN:["HR","Sales","Acct","Stock","Service"],
+title:"Mustika Dwi Kharisma Portfolio",map:"System map: Kentford ERP in the centre, customer tools on the left, marketing engine on the right"};
+const ZH={n1:"项目",n2:"工作方式",n3:"背景",n4:"联系",
+role:"具有财务与运营背景的AI专员",
+lead:"我为自己每天处理的业务问题搭建AI系统和工具：公司ERP、客服机器人、网站，以及每日内容制作。我的出发点不是技术，而是团队的需求和账本上的数字。",
+f1:"套ERP系统，整合人事、销售、财务、库存和售后服务",
+f2:"个由我管理的团队：销售、技术、仓库、行政、电商、司机",
+f3:"条社交媒体内容，每天由AI工作流制作发布",
+cap:"我在PT Kentford Group Indonesia（Singapower品牌发电机组经销商）搭建的系统图，2024–2026年。",
+pH:"我搭建的项目",pI:"以下项目均由我借助AI独立完成，同时兼任经理和财务工作。不展示公司内部数据。",
+eK:"核心项目 · 内部系统",tj:"目标",pr:"我的角色",du:"实际用途",
+eT:"将公司的人事、销售、财务、库存和售后服务整合到一个系统中，不再分散在多个文件和应用里。",
+eP:"根据各部门的需求设计每个模块的流程，并以AI为编程伙伴独立开发。",
+eU:"行政录入线上销售订单、录入和核对会计分录、公司记账，以及发电机组维修申请。",
+et1:"系统设计",et2:"AI辅助编程",et3:"业务流程",et4:"会计",
+m1:"人事",m1s:"员工数据与人事管理",m2:"销售",m2s:"订单，包括线上销售",m3:"财务",m3s:"会计分录与公司账簿",m4:"库存",m4s:"仓库库存",m5:"售后服务",m5s:"客户维修申请",
+bK:"客户服务",bH:"AI客服机器人",bT:"无需等待客服人员，即可回答Singapower发电机组潜在买家和客户的问题。",bP:"搭建机器人，整理其使用的产品知识，并设定回答方式。",bt1:"聊天机器人",bt2:"提示词设计",bt3:"客户服务",
+wK:"网站与数据分析",wT:"Singapower发电机组品牌官网，用于吸引潜在买家。",wP:"借助AI搭建网站，开展推广，并通过Google Analytics跟踪效果。",wt1:"AI建站",wt3:"数字营销",
+kK:"营销",kH:"内容与广告引擎",kT:"在没有专门创意团队的情况下，保持品牌在社交媒体上的活跃度。",kP:"搭建每天3条内容的AI工作流，投放Meta Ads广告，并设计公司简介。",kt1:"AI内容",kt3:"设计",
+sK:"管理与沟通",sH:"双语部门SOP",sT:"为六个团队制定工作标准及奖惩制度，供讲中文的管理层直接审阅。",sP:"根据各团队的实际问题编写内容，并用AI完成印尼语与中文之间的文件和沟通。",st2:"AI翻译",st3:"团队管理",
+cH:"我如何用AI工作",cI:"从ERP到每日内容，每个项目都遵循同样的方法。",
+c1:"从问题出发",c1p:"我负责审批、备用金和银行对账，并管理六个团队，所以清楚工作卡在哪里。",
+c2:"设计流程",c2p:"在使用任何工具之前，先理清谁录入、谁核对、需要哪些数据。",
+c3:"用AI搭建",c3p:"AI是我编程、写作、设计和翻译的伙伴，让一个人能完成一个团队的工作。",
+c4:"使用并改进",c4p:"系统直接投入团队日常使用，他们的反馈就是下一轮改进的依据。",
+lH:"背景",lI:"运营和财务经验，正是我搭建的工具能真正被使用的原因。",
+t1w:"2026年初 – 2026年11月",t1b:"经理，PT Kentford Group Indonesia",t1p:"管理销售、技术、仓库、行政、电商和司机团队。负责审批与付款、备用金、银行对账、为人事部门计算毛利，以及公司资产负债表。搭建Kentford ERP。",
+t2w:"2024年6月 – 2026年初",t2b:"助理经理，PT Kentford Group Indonesia",t2p:"外资（PMA）Singapower发电机组经销商。开始搭建AI机器人、singapower.com网站和内容流程。",
+t3w:"在读",t3b:"会计学本科，印尼开放大学（Universitas Terbuka）",
+g1:"AI能力",g1a:"用AI开发应用",g1b:"聊天机器人",g1c:"提示词设计",g1d:"工作流自动化",g1e:"AI内容与设计",g1f:"AI翻译",
+g2:"业务与财务",g2a:"记账与会计分录",g2b:"银行对账",g2c:"资产负债表",g2d:"毛利",g2e:"备用金",g2f:"团队管理",
+g3:"工具与语言",g3a:"印尼语",g3b:"英语（口语与书面）",
+kkH:"寻找AI专员或AI自动化相关岗位",kkP:"我最适合这样的团队：需要一个既懂业务流程和财务、又能直接用AI搭建解决方案的人。",
+loc:"雅加达西区",av:"可随时入职",ft:"Mustika Dwi Kharisma · 作品集 2026",
+mC:"客户",mO:"运营",mM:"营销",mBot:"AI客服",mBotS:"客户服务",mWebS:"网站 + 数据分析",mCon:"每日内容",mConS:"每天3条",mAds:"Meta Ads",mProf:"公司简介",mod:["人事","销售","财务","库存","售后"],modN:["人事","销售","财务","库存","售后"],
+title:"Mustika Dwi Kharisma 作品集",map:"系统图：Kentford ERP位于中心，左侧为客户工具，右侧为营销引擎"};
+const ID={mC:"Pelanggan",mO:"Operasional",mM:"Pemasaran",mBot:"Bot AI",mBotS:"layanan customer",mWebS:"website + analitik",mCon:"Konten harian",mConS:"3 per hari",mAds:"Iklan Meta Ads",mProf:"Company profile",mod:["HR","Penjualan","Accounting","Inventory","Servis"],modN:["HR","Jual","Akun","Stok","Servis"],title:document.title,map:document.getElementById('map').getAttribute('aria-label')};
+document.querySelectorAll('[data-k]').forEach(el=>{ID[el.dataset.k]=el.textContent});
+const D={id:ID,en:EN,zh:ZH};
+let L=ID;
 const s=document.getElementById('mapsvg');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const tw=(t,sz)=>t.length*sz*0.56+28;
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cjk=t=>/[　-鿿]/.test(t);
+const tw=(t,sz)=>[...t].reduce((a,c)=>a+(cjk(c)?sz:sz*0.56),0)+28;
 const box=(x,y,label,sub,kind)=>{
   const sz=kind==='hub'?20:15, w=Math.max(tw(label,sz),sub?tw(sub,13):0), h=sub?(kind==='hub'?66:54):42;
   const fill=kind==='hub'?'#ff5c8a':kind==='mod'?'#123a63':'#0f3358';
@@ -230,30 +313,29 @@ const box=(x,y,label,sub,kind)=>{
   const tc=kind==='hub'?'#2a0612':'#ffffff';
   return {x,y,w,h,svg:`<rect x="${x-w/2+3}" y="${y-h/2+5}" width="${w}" height="${h}" rx="12" fill="#04162a" opacity=".55"/>
   <rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="12" fill="${fill}" stroke="${stroke}"/>
-  <text x="${x}" y="${sub?y-4:y+5}" text-anchor="middle" font-size="${sz}" font-weight="700" fill="${tc}">${label}</text>`+
-  (sub?`<text x="${x}" y="${y+(kind==='hub'?20:16)}" text-anchor="middle" font-size="13" fill="${kind==='hub'?'#3d0a1b':'#a9c8e0'}">${sub}</text>`:'')};
+  <text x="${x}" y="${sub?y-4:y+5}" text-anchor="middle" font-size="${sz}" font-weight="700" fill="${tc}">${esc(label)}</text>`+
+  (sub?`<text x="${x}" y="${y+(kind==='hub'?20:16)}" text-anchor="middle" font-size="13" fill="${kind==='hub'?'#3d0a1b':'#a9c8e0'}">${esc(sub)}</text>`:'')};
 };
 const draw=()=>{
   const W=s.clientWidth,H=s.clientHeight; if(!W||!H) return;
   const narrow=W<620;
-  let L=[],R=[],hub,mods=[],heads=[];
+  let Lf=[],R=[],hub,mods=[],heads=[];
   if(!narrow){
     const lx=W*0.14,rx=W*0.86,cx=W/2;
-    heads=[[lx,'Pelanggan'],[cx,'Operasional'],[rx,'Pemasaran']].map(([x,t])=>`<text x="${x}" y="26" text-anchor="middle" font-size="14" font-weight="600" fill="#8fd3ff">${t}</text>`);
-    L=[box(lx,H*0.36,'Bot AI','layanan customer'),box(lx,H*0.68,'singapower.com','website + analitik')];
-    R=[box(rx,H*0.26,'Konten harian','3 per hari'),box(rx,H*0.52,'Iklan medsos'),box(rx,H*0.76,'Company profile')];
+    heads=[[lx,L.mC],[cx,L.mO],[rx,L.mM]].map(([x,t])=>`<text x="${x}" y="26" text-anchor="middle" font-size="14" font-weight="600" fill="#8fd3ff">${esc(t)}</text>`);
+    Lf=[box(lx,H*0.36,L.mBot,L.mBotS),box(lx,H*0.68,'singapower.com',L.mWebS)];
+    R=[box(rx,H*0.26,L.mCon,L.mConS),box(rx,H*0.52,L.mAds),box(rx,H*0.76,L.mProf)];
     hub=box(cx,H*0.32,'Kentford ERP','kentford.cloud','hub');
-    const my=H*0.66, gap=Math.min(150,W*0.12);
-    const mx=[cx-gap*1.5,cx-gap*0.5,cx+gap*0.5,cx+gap*1.5];
-    const labs=W<900?['HR','Jual','Akun','Servis']:['HR','Penjualan','Accounting','Servis'];
-    mods=labs.map((t,i)=>box(mx[i],my+(i%2?34:0),t,'', 'mod'));
+    const my=H*0.66, gap=Math.min(130,W*0.1);
+    const labs=W<1000?L.modN:L.mod;
+    mods=labs.map((t,i)=>box(cx+(i-2)*gap,my+(i%2?34:0),t,'','mod'));
   }else{
     const cx=W/2;
-    heads=[[24,'Pelanggan',H*0.05],[24,'Operasional',H*0.33],[24,'Pemasaran',H*0.79]].map(([x,t,y])=>`<text x="${x}" y="${y}" font-size="14" font-weight="600" fill="#8fd3ff">${t}</text>`);
-    L=[box(W*0.28,H*0.15,'Bot AI'),box(W*0.72,H*0.15,'Website')];
+    heads=[[24,L.mC,H*0.05],[24,L.mO,H*0.33],[24,L.mM,H*0.77]].map(([x,t,y])=>`<text x="${x}" y="${y}" font-size="14" font-weight="600" fill="#8fd3ff">${esc(t)}</text>`);
+    Lf=[box(W*0.28,H*0.15,L.mBot),box(W*0.72,H*0.15,'Website')];
     hub=box(cx,H*0.44,'Kentford ERP','kentford.cloud','hub');
-    mods=['HR','Jual','Akun','Servis'].map((t,i)=>box(W*(0.14+i*0.24),H*0.62,t,'','mod'));
-    R=[box(W*0.2,H*0.9,'Konten'),box(W*0.5,H*0.9,'Iklan'),box(W*0.8,H*0.9,'Profil')];
+    mods=L.modN.map((t,i)=>box(W*(0.12+i*0.19),H*0.62,t,'','mod'));
+    R=[box(W*0.2,H*0.9,L.mCon),box(W*0.53,H*0.9,'Ads'),box(W*0.83,H*0.9,'Profile')];
   }
   const paths=[];
   const link=(a,b,main)=>{
@@ -269,18 +351,34 @@ const draw=()=>{
     paths.push(d);
     return `<path d="${d}" fill="none" stroke="${main?'#ff5c8a':'#4f86b8'}" stroke-width="${main?2.5:1.8}" ${main?'':'stroke-dasharray="5 6"'} opacity=".9"/>`;
   };
-  const vlink=(a,b)=>{const y1=a.y+a.h/2,y2=b.y-b.h/2,m=(y1+y2)/2;const d=`M${a.x},${y1} C${a.x},${m} ${b.x},${m} ${b.x},${y2}`;paths.push(d);return `<path d="${d}" fill="none" stroke="#8fd3ff" stroke-width="2" opacity=".8"/>`};
-  let lines=L.map(n=>link(n,hub,true)).join('')+R.map(n=>link(hub,n,false)).join('')+mods.map(m=>vlink(hub,m)).join('');
+  const vlink=(a,b)=>{const y1=a.y+a.h/2,y2=b.y-b.h/2,m=(y1+y2)/2;const d=`M${a.x},${y1} C${a.x},${m} ${b.x},${m} ${b.x},${y2}`;return `<path d="${d}" fill="none" stroke="#8fd3ff" stroke-width="2" opacity=".8"/>`};
+  const lines=Lf.map(n=>link(n,hub,true)).join('')+R.map(n=>link(hub,n,false)).join('')+mods.map(m=>vlink(hub,m)).join('');
   let grid='';
   for(let x=0;x<W;x+=40) grid+=`<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="#ffffff" opacity=".04"/>`;
   for(let y=0;y<H;y+=40) grid+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#ffffff" opacity=".04"/>`;
   const glow=`<circle cx="${hub.x}" cy="${hub.y}" r="${Math.min(W,H)*0.32}" fill="url(#g)"/>`;
   const tok=reduce?'':paths.slice(0,2).map((d,i)=>`<circle r="5" fill="#ffffff"><animateMotion dur="${3.2+i}s" repeatCount="indefinite" path="${d}"/></circle>`).join('');
   s.innerHTML=`<defs><radialGradient id="g"><stop offset="0" stop-color="#ff5c8a" stop-opacity=".22"/><stop offset="1" stop-color="#ff5c8a" stop-opacity="0"/></radialGradient></defs>`+
-    grid+glow+heads.join('')+lines+tok+[...L,...R,...mods,hub].map(n=>n.svg).join('');
+    grid+glow+heads.join('')+lines+tok+[...Lf,...R,...mods,hub].map(n=>n.svg).join('');
 };
+const setLang=(code,push)=>{
+  if(!D[code]) code='id';
+  L=D[code];
+  document.documentElement.lang=code;
+  document.querySelectorAll('[data-k]').forEach(el=>{const v=L[el.dataset.k]??ID[el.dataset.k];if(v!=null) el.textContent=v});
+  document.title=L.title; document.getElementById('map').setAttribute('aria-label',L.map);
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===code)));
+  try{localStorage.setItem('lang',code)}catch(e){}
+  if(push){try{history.replaceState(null,'',code==='id'?location.pathname:'#'+code)}catch(e){}}
+  draw();
+};
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l,true)));
 const ro=new ResizeObserver(draw); ro.observe(s);
 if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
+let start=location.hash.slice(1);
+if(!D[start]){try{start=localStorage.getItem('lang')||'id'}catch(e){start='id'}}
+setLang(start,false);
+addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(D[h]) setLang(h,false)});
 }
 </script>
 </body>
