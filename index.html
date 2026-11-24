@@ -98,6 +98,26 @@ h2{font-size:clamp(32px,4vw,46px);line-height:1.05;letter-spacing:-.02em;font-we
 .contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
 .contact .row span{border:1px solid #2b5480;border-radius:999px;padding:8px 16px;font-size:15px}
 footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,16px);border-top:1px solid #1b3b5e}
+.show{background:var(--panel);border-block:1px solid var(--line)}
+.gtabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.gtabs button{font:600 15px/1 var(--font);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:0 18px;min-height:44px;cursor:pointer}
+.gtabs button[aria-selected=true]{background:var(--sea);border-color:var(--sea);color:#fff}
+.gtabs button:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+.stage{position:relative;padding-right:clamp(0px,15vw,210px)}
+.browser{margin:0;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 18px 40px -24px rgba(10,37,64,.55)}
+.bar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#e8eef4;border-bottom:1px solid #d5e1ec}
+.bar i{width:11px;height:11px;border-radius:50%;background:#c7d3df}
+.bar i:first-child{background:#ff5c8a}
+.url{margin-left:10px;flex:1;max-width:420px;background:#fff;border-radius:999px;padding:4px 14px;font-size:13px;color:#46607a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser img{display:block;width:100%;height:auto;aspect-ratio:1400/836;object-fit:cover;object-position:top}
+.phone{position:absolute;right:0;bottom:-28px;width:clamp(120px,16vw,220px);margin:0;border:9px solid var(--sea);border-radius:30px;overflow:hidden;background:var(--sea);box-shadow:0 20px 40px -20px rgba(10,37,64,.7);transition:opacity .25s}
+.phone img{display:block;width:100%;height:auto}
+.stage.nophone .phone{opacity:0;visibility:hidden}
+.gcap{margin:44px 0 0;color:var(--soft);max-width:70ch;font-size:16px}
+.shot{display:block;width:100%;height:auto;border-radius:10px;border:1px solid #2b5480}
+.card .shot{border-color:var(--line);margin-bottom:4px}
+.mods .shot{grid-column:1/-1}
+@media(max-width:700px){.stage{padding-right:0}.phone{display:none}.gcap{margin-top:16px}}
 @media(max-width:900px){.feature{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:26px;border-top:0}.steps li{border-top:3px solid var(--pink)}}
 @media(max-width:760px){.hero .top,.split{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:600px){nav b{flex-basis:100%}nav a{font-size:14px}.fig{height:520px}.mods{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:minmax(0,1fr)}}
@@ -105,7 +125,7 @@ footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,1
 </style>
 </head>
 <body>
-<nav><div class="wrap"><b>Mustika D. Kharisma</b><a href="#proyek" data-k="n1">Proyek</a><a href="#cara-kerja" data-k="n2">Cara kerja</a><a href="#latar" data-k="n3">Latar belakang</a><a href="#kontak" data-k="n4">Kontak</a>
+<nav><div class="wrap"><b>Mustika D. Kharisma</b><a href="#hasil" data-k="n0">Galeri</a><a href="#proyek" data-k="n1">Proyek</a><a href="#cara-kerja" data-k="n2">Cara kerja</a><a href="#latar" data-k="n3">Latar belakang</a><a href="#kontak" data-k="n4">Kontak</a>
 <div class="lang" role="group" aria-label="Bahasa / Language / 语言"><button type="button" id="l-id" data-l="id" aria-pressed="true">ID</button><button type="button" id="l-en" data-l="en" aria-pressed="false">EN</button><button type="button" id="l-zh" data-l="zh" aria-pressed="false">中文</button></div></div></nav>
 
 <header class="hero band">
@@ -126,6 +146,24 @@ footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,1
     <p class="cap" data-k="cap">Peta sistem yang saya bangun di PT Kentford Group Indonesia (distributor genset merek Singapower), 2024 sampai 2026.</p>
   </div>
 </header>
+
+<section class="band show" id="hasil">
+  <div class="wrap">
+    <h2 data-k="gH">Hasil kerja yang bisa dilihat</h2>
+    <p class="intro" data-k="gI">Tangkapan layar asli dari website dan sistem yang saya bangun.</p>
+    <div class="gtabs" role="tablist" aria-label="Galeri">
+      <button type="button" role="tab" id="t-web" data-g="web" aria-selected="true" data-k="gt1">singapower.com</button>
+      <button type="button" role="tab" id="t-calc" data-g="calc" aria-selected="false" data-k="gt2">Kalkulator daya</button>
+      <button type="button" role="tab" id="t-zh" data-g="zh" aria-selected="false" data-k="gt3">Tiga bahasa</button>
+      <button type="button" role="tab" id="t-erp" data-g="erp" aria-selected="false" data-k="gt4">Kentford ERP</button>
+    </div>
+    <div class="stage" id="stage">
+      <figure class="browser"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url" id="gurl">singapower.com</span></div><img id="gimg" src="web-home.jpg" width="1400" height="836" alt="Halaman utama singapower.com"></figure>
+      <figure class="phone"><img src="web-mobile.jpg" width="560" height="1212" alt="singapower.com di layar HP" loading="lazy"></figure>
+    </div>
+    <p class="gcap" id="gcap">Website merek genset Singapower yang saya bangun dengan AI. Tampil rapi di desktop maupun HP.</p>
+  </div>
+</section>
 
 <section class="band" id="proyek">
   <div class="wrap">
@@ -238,7 +276,7 @@ footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,1
 
 <script>
 {
-const EN={n1:"Projects",n2:"How I work",n3:"Background",n4:"Contact",
+const EN={gH:"Work you can see",gI:"Real screenshots of the website and systems I built.",gt1:"singapower.com",gt2:"Power calculator",gt3:"Three languages",gt4:"Kentford ERP",n0:"Gallery",n1:"Projects",n2:"How I work",n3:"Background",n4:"Contact",
 role:"AI Specialist with a finance & operations background",
 lead:"I build AI-powered systems and tools for the business problems I handle myself every day: a company ERP, a customer service bot, a website, and daily content production. I don’t start from technology. I start from what the team needs and what the books say.",
 f1:"ERP system bringing HR, sales, accounting, inventory and service requests together",
@@ -272,7 +310,7 @@ kkH:"Looking for an AI Specialist or AI Automation role",kkP:"I fit best in a te
 loc:"West Jakarta",av:"Available immediately",ft:"Mustika Dwi Kharisma · Portfolio 2026",
 mC:"Customers",mO:"Operations",mM:"Marketing",mBot:"AI bot",mBotS:"customer service",mWebS:"website + analytics",mCon:"Daily content",mConS:"3 per day",mAds:"Meta Ads",mProf:"Company profile",mod:["HR","Sales","Accounting","Inventory","Service"],modN:["HR","Sales","Acct","Stock","Service"],
 title:"Mustika Dwi Kharisma Portfolio",map:"System map: Kentford ERP in the centre, customer tools on the left, marketing engine on the right"};
-const ZH={n1:"项目",n2:"工作方式",n3:"背景",n4:"联系",
+const ZH={gH:"看得见的成果",gI:"我搭建的网站和系统的真实截图。",gt1:"singapower.com",gt2:"功率计算器",gt3:"三种语言",gt4:"Kentford ERP",n0:"作品展示",n1:"项目",n2:"工作方式",n3:"背景",n4:"联系",
 role:"具有财务与运营背景的AI专员",
 lead:"我为自己每天处理的业务问题搭建AI系统和工具：公司ERP、客服机器人、网站，以及每日内容制作。我的出发点不是技术，而是团队的需求和账本上的数字。",
 f1:"套ERP系统，整合人事、销售、财务、库存和售后服务",
@@ -370,16 +408,25 @@ const draw=()=>{
   s.innerHTML=`<defs><radialGradient id="g"><stop offset="0" stop-color="#ff5c8a" stop-opacity=".22"/><stop offset="1" stop-color="#ff5c8a" stop-opacity="0"/></radialGradient></defs>`+
     grid+glow+heads.join('')+lines+tok+[...Lf,...R,...mods,hub].map(n=>n.svg).join('');
 };
+const GAL={
+web:{img:"web-home.jpg",url:"singapower.com",phone:1,alt:{id:"Halaman utama singapower.com",en:"singapower.com home page",zh:"singapower.com 首页"},cap:{id:"Website merek genset Singapower yang saya bangun dengan AI. Tampil rapi di desktop maupun HP.",en:"The Singapower generator brand website I built with AI. Works cleanly on desktop and phone.",zh:"我借助AI搭建的Singapower发电机组品牌官网，电脑和手机上都能良好显示。"}},
+calc:{img:"web-kalkulator.jpg",url:"singapower.com/kalkulator-daya-genset",phone:1,alt:{id:"Kalkulator daya genset dengan hasil 500 kVA",en:"Generator power calculator showing a 500 kVA result",zh:"发电机组功率计算器，结果为500 kVA"},cap:{id:"Kalkulator daya genset di singapower.com. Customer memasukkan peralatannya, sistem menghitung kVA dan merekomendasikan kapasitas genset. Contoh ini memakai preset pabrik dan menghasilkan 500 kVA.",en:"The generator power calculator on singapower.com. Customers enter their equipment and it works out the kVA and recommends a generator size. This example uses the factory preset and recommends 500 kVA.",zh:"singapower.com上的发电机组功率计算器。客户输入设备后，系统计算kVA并推荐发电机组容量。此示例使用工厂预设，推荐500 kVA。"}},
+zh:{img:"web-zh.jpg",url:"singapower.com/zh",phone:1,alt:{id:"singapower.com versi Mandarin",en:"singapower.com in Chinese",zh:"singapower.com 中文版"},cap:{id:"Website yang sama dalam versi 中文. Tersedia juga dalam Bahasa Indonesia dan English.",en:"The same website in Chinese. It is also available in Indonesian and English.",zh:"同一网站的中文版，另有印尼语和英语版本。"}},
+erp:{img:"erp-login.jpg",url:"kentford.cloud",phone:0,alt:{id:"Halaman masuk Kentford ERP",en:"Kentford ERP sign-in page",zh:"Kentford ERP 登录页面"},cap:{id:"Halaman masuk Kentford ERP. Isi sistemnya tidak ditampilkan karena berisi data internal perusahaan.",en:"The Kentford ERP sign-in page. The inside of the system is not shown because it holds internal company data.",zh:"Kentford ERP登录页面。系统内部含有公司内部数据，因此不予展示。"}}};
+let gCur='web',lCur='id';
+const gShow=()=>{const g=GAL[gCur];const im=document.getElementById('gimg');im.src=g.img;im.alt=g.alt[lCur];document.getElementById('gurl').textContent=g.url;document.getElementById('gcap').textContent=g.cap[lCur];document.getElementById('stage').classList.toggle('nophone',!g.phone);document.querySelectorAll('.gtabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.g===gCur)))};
+document.querySelectorAll('.gtabs button').forEach(b=>b.addEventListener('click',()=>{gCur=b.dataset.g;gShow()}));
+Object.values(GAL).forEach(g=>{const i=new Image();i.src=g.img});
 const setLang=(code,push)=>{
   if(!D[code]) code='id';
-  L=D[code];
+  L=D[code];lCur=code;
   document.documentElement.lang=code;
   document.querySelectorAll('[data-k]').forEach(el=>{const v=L[el.dataset.k]??ID[el.dataset.k];if(v!=null) el.textContent=v});
   document.title=L.title; document.getElementById('map').setAttribute('aria-label',L.map);
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===code)));
   try{localStorage.setItem('lang',code)}catch(e){}
   if(push){try{history.replaceState(null,'',code==='id'?location.pathname:'#'+code)}catch(e){}}
-  draw();
+  draw();gShow();
 };
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l,true)));
 const ro=new ResizeObserver(draw); ro.observe(s);
