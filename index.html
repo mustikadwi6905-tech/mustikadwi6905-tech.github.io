@@ -13,128 +13,237 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a2540">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 /* VOICE everyday-professional: a business operator who builds her own AI tools, calm and confident
    IDEA an atlas plate of one company's operations: the systems she built, mapped as one connected network
    PICTURE a live system map: Kentford ERP at the centre, customer tools on the left, marketing engine on the right, a token travelling the routes
    COLOUR deep sea #0a2540 band, sky #8fd3ff, white, signal pink #ff5c8a for what she built
-   TYPE Hanken Grotesk 300 very large for the name + Hanken Grotesk for text (Noto Sans SC for Chinese)
-   LAYOUT name across the top of the sea band, map full width beneath; then projects, method, background, contact; phone stacks title, map, content */
-:root{color-scheme:light dark;--bg:light-dark(#ffffff,#07182b);--ink:light-dark(#0a2540,#e8f2fb);--soft:light-dark(#46607a,#9fb6cc);--line:light-dark(#d5e1ec,#1d3a58);--panel:light-dark(#f3f8fc,#0c2238);--sea:#0a2540;--sky:#8fd3ff;--pink:#ff5c8a;--pinkink:light-dark(#d1215a,#ff7fa3);--font:"Hanken Grotesk",system-ui,sans-serif}
+   TYPE Geist 300 very large for the name + Geist for text, Geist Mono for labels (Noto Sans SC for Chinese)
+   MOTION cinematic hero (spring nav, word reveal, map clears from blur, cursor-lit dot grain), scroll reveals,
+          sliding pill indicators, filling method line, wordmark footer. All of it off under prefers-reduced-motion. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#07182b);--ink:light-dark(#0a2540,#e8f2fb);--soft:light-dark(#46607a,#9fb6cc);--line:light-dark(#d5e1ec,#1d3a58);--panel:light-dark(#f3f8fc,#0c2238);--sea:#0a2540;--sky:#8fd3ff;--pink:#ff5c8a;--pinkink:light-dark(#d1215a,#ff7fa3);--live:#3ddc97;--font:"Geist",system-ui,sans-serif;--mono:"Geist Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;--spring:cubic-bezier(.34,1.56,.64,1);--ease:cubic-bezier(.2,.8,.2,1)}
 :root[data-theme=light]{color-scheme:light}
 :root[data-theme=dark]{color-scheme:dark}
-html[lang=zh]{--font:"Hanken Grotesk","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+html[lang=zh]{--font:"Geist","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;--mono:"Geist Mono","Noto Sans SC","PingFang SC",monospace}
 *{box-sizing:border-box;min-width:0}
-html{scroll-padding-top:72px;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--font);overflow-x:clip}
+html{scroll-padding-top:calc(var(--navh,72px) + 16px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--font);overflow-x:clip;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.band{padding-block:clamp(36px,5vw,72px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.band{padding-block:clamp(48px,6vw,96px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
 .wrap{max-width:1240px;margin:0 auto}
-nav{position:sticky;top:0;z-index:5;background:var(--sea);color:#fff;border-bottom:1px solid #1b3b5e}
-nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;padding:10px max(5vw,16px)}
-nav b{font-weight:700;margin-right:auto}
-nav a{text-decoration:none;color:#cfe6f7;font-size:15px;padding:8px 0}
-nav a:hover,nav a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:4px}
-.lang{display:flex;border:1px solid #2b5480;border-radius:999px;padding:3px;gap:2px}
-.lang button{font:600 14px/1 var(--font);color:#cfe6f7;background:transparent;border:0;border-radius:999px;padding:0 14px;min-height:36px;min-width:44px;cursor:pointer}
+
+/* progress */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--pink);transform-origin:left;transform:scaleX(0);z-index:7;pointer-events:none}
+
+/* nav: floating glass pill */
+nav{position:fixed;top:0;left:0;right:0;z-index:6;padding:12px max(3vw,10px) 0;pointer-events:none;animation:navIn 1s var(--spring) both}
+nav .wrap{pointer-events:auto;display:flex;align-items:center;gap:6px 14px;padding:7px 7px 7px 20px;border-radius:999px;background:rgba(10,37,64,.55);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(143,211,255,.16);color:#fff;transition:background .35s,box-shadow .35s}
+nav.scrolled .wrap{background:rgba(10,37,64,.88);box-shadow:0 14px 34px -18px rgba(4,22,42,.75)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;text-decoration:none;white-space:nowrap;letter-spacing:-.01em}
+.brand::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--pink);box-shadow:0 0 14px rgba(255,92,138,.7)}
+.links{position:relative;display:flex;gap:2px;margin-left:auto;scrollbar-width:none}
+.links::-webkit-scrollbar{display:none}
+.links a{flex:none;position:relative;z-index:1;text-decoration:none;color:#cfe6f7;font-size:15px;padding:8px 14px;border-radius:999px;white-space:nowrap;transition:color .2s}
+.links a:hover,.links a[aria-current=true]{color:#fff}
+.links a:focus-visible{outline:2px solid var(--sky);outline-offset:-2px}
+.ind{position:absolute;top:0;left:0;border-radius:999px;opacity:0;pointer-events:none;transition:transform .55s var(--spring),width .55s var(--spring),height .3s,opacity .25s}
+.links .ind{background:rgba(143,211,255,.16);box-shadow:inset 0 0 0 1px rgba(143,211,255,.22)}
+.lang{display:flex;border:1px solid #2b5480;border-radius:999px;padding:3px;gap:2px;flex:none}
+.lang button{font:600 14px/1 var(--font);color:#cfe6f7;background:transparent;border:0;border-radius:999px;padding:0 13px;min-height:34px;min-width:44px;cursor:pointer;transition:background .25s,color .25s}
 .lang button[aria-pressed=true]{background:var(--pink);color:#2a0612}
 .lang button:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
-.hero{background:var(--sea);color:#fff;padding-bottom:0}
-.hero h1{font-weight:300;font-size:clamp(44px,7.4vw,92px);line-height:1.02;letter-spacing:-.03em;margin:0;text-wrap:balance}
-.hero .role{font-size:clamp(20px,2.4vw,28px);font-weight:600;color:var(--sky);margin:14px 0 0}
-.hero .lead{max-width:62ch;font-size:17px;color:#d6e8f6;margin:14px 0 0}
+
+/* hero */
+.hero{position:relative;isolation:isolate;overflow:hidden;background:var(--sea);color:#fff;padding-top:calc(var(--navh,72px) + clamp(36px,5vw,72px));padding-bottom:0}
+.hero::before,.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-size:22px 22px}
+.hero::before{background-image:radial-gradient(rgba(255,255,255,.075) 1px,transparent 1.6px);-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+.hero::after{background-image:radial-gradient(rgba(143,211,255,.75) 1px,transparent 1.6px);-webkit-mask-image:radial-gradient(240px circle at var(--mx,70%) var(--my,40%),#000,transparent 75%);mask-image:radial-gradient(240px circle at var(--mx,70%) var(--my,40%),#000,transparent 75%);opacity:0;transition:opacity .5s}
+.hero.lit::after{opacity:1}
+.badge{display:inline-flex;align-items:center;gap:10px;font:500 13px/1.2 var(--mono);letter-spacing:.03em;color:#cfe6f7;border:1px solid #2b5480;background:rgba(143,211,255,.06);border-radius:999px;padding:8px 14px 8px 12px;margin:0 0 24px;animation:rise .8s .1s var(--ease) both}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 rgba(61,220,151,.55);animation:pulse 2.2s infinite}
+.hero h1{font-weight:300;font-size:clamp(46px,7.8vw,104px);line-height:1;letter-spacing:-.045em;margin:0;text-wrap:balance}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.hero h1 .w>span{display:inline-block;animation:wordUp 1.1s var(--ease) both}
+.hero h1 .w:nth-child(2)>span{animation-delay:.09s}
+.hero h1 .w:nth-child(3)>span{animation-delay:.18s}
+.hero .role{font-size:clamp(20px,2.4vw,28px);font-weight:500;letter-spacing:-.01em;color:var(--sky);margin:16px 0 0;animation:rise .9s .4s var(--ease) both}
+.hero .lead{max-width:62ch;font-size:17px;color:#d6e8f6;margin:14px 0 0;animation:rise .9s .5s var(--ease) both}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero .cta{animation:rise .9s .6s var(--ease) both}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 24px;border-radius:999px;font:600 16px/1 var(--font);text-decoration:none;transition:transform .35s var(--spring),background .2s,border-color .2s,box-shadow .3s}
+.btn::after{content:"→";font-family:var(--mono);transition:transform .35s var(--spring)}
+.btn.down::after{content:"↓"}
+.btn.ext::after{content:"↗"}
+.btn:hover{transform:translateY(-2px)}
+.btn:hover::after{transform:translateX(3px)}
+.btn.down:hover::after{transform:translateY(3px)}
+.btn.ext:hover::after{transform:translate(2px,-2px)}
+.btn.pri{background:var(--pink);color:#2a0612;box-shadow:0 10px 30px -12px rgba(255,92,138,.8)}
+.btn.pri:hover{background:#ff7a9f;box-shadow:0 14px 34px -12px rgba(255,92,138,.95)}
+.btn.ghost{border:1px solid #2b5480;color:#fff;background:rgba(255,255,255,.04)}
+.btn.ghost:hover{border-color:var(--sky);background:rgba(143,211,255,.08)}
+.btn:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
 .hero .top{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;align-items:end}
 .facts{display:grid;gap:10px;margin:0;padding:0;list-style:none}
-.facts li{display:flex;gap:12px;align-items:baseline;border-top:1px solid #24486f;padding-top:10px;font-size:15px;color:#d6e8f6}
-.facts strong{color:#fff;font-size:24px;font-weight:600;white-space:nowrap;min-width:2.2em}
-.fig{position:relative;height:clamp(360px,40vw,460px);margin-top:clamp(24px,3vw,40px)}
-.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.facts li{display:flex;gap:12px;align-items:baseline;border-top:1px solid #24486f;padding-top:10px;font-size:15px;color:#d6e8f6;animation:rise .9s var(--ease) both}
+.facts li:nth-child(1){animation-delay:.55s}.facts li:nth-child(2){animation-delay:.63s}.facts li:nth-child(3){animation-delay:.71s}
+.facts strong{color:#fff;font-size:26px;font-weight:500;white-space:nowrap;min-width:2.2em;font-variant-numeric:tabular-nums}
+.fig{position:relative;height:clamp(360px,40vw,460px);margin-top:clamp(28px,3.4vw,48px);transform-origin:50% 0;will-change:transform}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%;animation:clear 1.6s .6s var(--ease) both;transition:transform .9s var(--ease)}
 .fig svg text{font-family:var(--font)}
-.cap{font-size:14px;color:#9fc0da;padding:12px 0 22px;margin:0}
-h2{font-size:clamp(32px,4vw,46px);line-height:1.05;letter-spacing:-.02em;font-weight:600;margin:0 0 10px;text-wrap:balance}
-.intro{color:var(--soft);max-width:66ch;margin:0 0 28px;font-size:17px}
+.cap{font:13px/1.5 var(--mono);color:#9fc0da;padding:14px 0 24px;margin:0}
+
+/* marquee */
+.mq{background:var(--sea);border-block:1px solid #1b3b5e;overflow:hidden;padding:15px 0}
+.mqi{-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mqt{display:flex;width:max-content;animation:mq 50s linear infinite;font:500 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.09em;color:#cfe6f7}
+.mqt span{display:inline-flex;align-items:center;gap:30px;padding-right:30px;white-space:nowrap}
+.mqt span::after{content:"✦";color:var(--pink);font-size:11px}
+.mq:hover .mqt{animation-play-state:paused}
+
+/* section basics */
+.eyebrow{display:flex;align-items:center;gap:12px;font:500 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--pinkink);margin:0 0 16px}
+.eyebrow::after{content:"";width:48px;height:1px;background:currentColor;opacity:.5}
+h2{font-size:clamp(34px,4.4vw,54px);line-height:1.02;letter-spacing:-.035em;font-weight:500;margin:0 0 12px;text-wrap:balance}
+.intro{color:var(--soft);max-width:66ch;margin:0 0 32px;font-size:17px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:12px}
-.card h3{font-size:24px;line-height:1.15;margin:0;font-weight:600}
-.card .kind{color:var(--pinkink);font-weight:600;font-size:15px;margin:0}
+.card{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;transition:border-color .3s,transform .4s var(--spring),box-shadow .4s}
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(380px circle at var(--x,50%) var(--y,50%),rgba(255,92,138,.13),transparent 62%);opacity:0;transition:opacity .35s}
+.card>*{position:relative}
+@media(hover:hover){.card:hover::before{opacity:1}.card:hover{border-color:color-mix(in srgb,var(--pink) 45%,var(--line));transform:translateY(-3px);box-shadow:0 22px 40px -28px rgba(10,37,64,.55)}}
+.card h3{font-size:24px;line-height:1.15;margin:0;font-weight:600;letter-spacing:-.02em}
+.card .kind{color:var(--pinkink);font:500 12.5px/1.3 var(--mono);letter-spacing:.07em;text-transform:uppercase;margin:0}
 .card dl{margin:0;display:grid;gap:10px}
-.card dt{font-weight:700;font-size:15px}
+.card dt{font-weight:600;font-size:15px}
 .card dd{margin:2px 0 0;color:var(--soft)}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
 .tags span{font-size:14px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--bg)}
 .feature{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;background:var(--sea);color:#fff;border-color:var(--sea)}
+.feature::before{background:radial-gradient(520px circle at var(--x,50%) var(--y,50%),rgba(143,211,255,.12),transparent 62%)}
 .feature .kind{color:var(--pink)}
 .feature dd{color:#cfe2f2}
 .feature .tags span{background:transparent;border-color:#2b5480;color:#e6f2fb}
 .fcol{display:flex;flex-direction:column;gap:12px}
 .mods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:start}
-.mods div{border:1px solid #2b5480;border-radius:12px;padding:14px 16px;background:#0f2f52}
+.mods div{border:1px solid #2b5480;border-radius:12px;padding:14px 16px;background:#0f2f52;transition:border-color .25s,background .25s}
+.mods div:hover{border-color:var(--sky);background:#123a63}
 .mods div:last-child{grid-column:1/-1}
-.mods b{display:block;font-size:17px;color:#fff}
+.mods b{display:block;font-size:17px;font-weight:600;color:#fff}
 .mods small{font-size:14px;color:#a9c8e0}
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:3px solid var(--pink);list-style:none;margin:0;padding:0}
-.steps li{padding:18px 18px 0 0;position:relative}
-.steps li::before{content:"";position:absolute;top:-9px;left:0;width:15px;height:15px;border-radius:50%;background:var(--bg);border:3px solid var(--pink)}
-.steps b{display:block;font-size:19px;margin-bottom:4px}
+
+/* method steps with filling line */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:3px solid var(--pink);list-style:none;margin:0;padding:0;position:relative}
+.steps li{padding:22px 22px 0 0;position:relative}
+.steps li::before{content:"";position:absolute;top:-9px;left:0;width:15px;height:15px;border-radius:50%;background:var(--bg);border:3px solid var(--pink);z-index:1}
+.steps .no{display:block;font:500 13px/1 var(--mono);color:var(--soft);letter-spacing:.06em;margin-bottom:10px}
+.steps b{display:block;font-size:20px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
 .steps p{margin:0;color:var(--soft)}
+.steps.prog{border-top-color:transparent}
+.steps.prog::before,.steps.prog::after{content:"";position:absolute;left:0;right:0;top:-3px;height:3px}
+.steps.prog::before{background:var(--line)}
+.steps.prog::after{background:var(--pink);transform-origin:left;transform:scaleX(var(--p,0));box-shadow:0 0 12px rgba(255,92,138,.6)}
+.steps.prog li::before{border-color:var(--line);transition:border-color .35s,background .35s,transform .45s var(--spring)}
+.steps.prog li.lit::before{border-color:var(--pink);background:var(--pink);transform:scale(1.15)}
+.steps.prog li .no{transition:color .35s}
+.steps.prog li.lit .no{color:var(--pinkink)}
+
 .split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
 .time{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
-.time li{padding:0 0 22px 22px;position:relative}
+.time li{padding:0 0 24px 22px;position:relative}
 .time li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--sky);border:2px solid var(--sea)}
-.time li.now::before{background:var(--pink)}
-.time .when{font-size:14px;color:var(--soft);white-space:nowrap}
-.time b{display:block;font-size:18px}
+.time li.now::before{background:var(--pink);box-shadow:0 0 0 4px color-mix(in srgb,var(--pink) 22%,transparent)}
+.time .when{font:13px/1.4 var(--mono);color:var(--soft);white-space:nowrap}
+.time b{display:block;font-size:18px;font-weight:600}
 .time p{margin:4px 0 0;color:var(--soft)}
 .skills{display:grid;gap:16px}
 .skills h3{font-size:18px;margin:0 0 8px}
 .skills .tags{margin-top:0;padding-top:0}
 .alt{background:var(--panel);border-block:1px solid var(--line)}
-.contact{background:var(--sea);color:#fff}
-.contact h2{max-width:22ch}
+
+/* contact + wordmark footer */
+.contact{background:var(--sea);color:#fff;position:relative;isolation:isolate;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(700px 380px at 85% 0%,rgba(255,92,138,.16),transparent 70%),radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.6px) 0 0/22px 22px}
+.contact .eyebrow{color:var(--pink)}
+.contact h2{max-width:20ch;font-size:clamp(36px,5.2vw,64px)}
 .contact p{color:#d6e8f6;max-width:60ch;font-size:17px}
-.contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
-.contact .row span{border:1px solid #2b5480;border-radius:999px;padding:8px 16px;font-size:15px}
-footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,16px);border-top:1px solid #1b3b5e}
+.contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.contact .row>span{display:inline-flex;align-items:center;gap:10px;border:1px solid #2b5480;border-radius:999px;padding:8px 16px;font-size:15px;color:#d6e8f6}
+footer{background:var(--sea);color:#8fb0cc;font-size:14px;border-top:1px solid #1b3b5e;overflow:hidden}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding:20px max(5vw,16px) 0;font-family:var(--mono);font-size:13px}
+.foot a{color:#cfe6f7;text-decoration:none}
+.foot a:hover,.foot a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.mark{display:block;font-weight:600;font-size:clamp(80px,21.5vw,320px);line-height:.8;letter-spacing:-.07em;text-align:center;margin:clamp(16px,3vw,40px) 0 -.13em;white-space:nowrap;user-select:none;background:linear-gradient(180deg,#24598f 0%,rgba(36,89,143,.25) 70%,rgba(36,89,143,0));-webkit-background-clip:text;background-clip:text;color:transparent;transform:translateY(calc((1 - var(--f,1)) * 35%));transition:transform .2s linear}
+
+/* gallery */
 .show{background:var(--panel);border-block:1px solid var(--line)}
-.gtabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
-.gtabs button{font:600 15px/1 var(--font);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:0 18px;min-height:44px;cursor:pointer}
-.gtabs button[aria-selected=true]{background:var(--sea);border-color:var(--sea);color:#fff}
+.gtabs{position:relative;display:inline-flex;flex-wrap:wrap;gap:4px;margin:0 0 24px;padding:4px;border:1px solid var(--line);border-radius:26px;background:var(--bg)}
+.gtabs button{position:relative;z-index:1;font:600 15px/1 var(--font);color:var(--ink);background:transparent;border:0;border-radius:999px;padding:0 18px;min-height:42px;cursor:pointer;transition:color .3s}
+.gtabs button[aria-selected=true]{background:var(--sea);color:#fff}
+.gtabs.slid button[aria-selected=true]{background:transparent;transition:color .25s .15s}
+.gtabs .ind{background:var(--sea);box-shadow:0 8px 18px -10px rgba(10,37,64,.7)}
 .gtabs button:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
 .stage{position:relative;padding-right:clamp(0px,15vw,210px)}
-.browser{margin:0;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 18px 40px -24px rgba(10,37,64,.55)}
+.browser{margin:0;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(10,37,64,.55)}
 .bar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#e8eef4;border-bottom:1px solid #d5e1ec}
 .bar i{width:11px;height:11px;border-radius:50%;background:#c7d3df}
 .bar i:first-child{background:#ff5c8a}
-.url{margin-left:10px;flex:1;max-width:420px;background:#fff;border-radius:999px;padding:4px 14px;font-size:13px;color:#46607a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.browser img{display:block;width:100%;height:auto;aspect-ratio:1400/836;object-fit:cover;object-position:top}
-.phone{position:absolute;right:0;bottom:-28px;width:clamp(120px,16vw,220px);margin:0;border:9px solid var(--sea);border-radius:30px;overflow:hidden;background:var(--sea);box-shadow:0 20px 40px -20px rgba(10,37,64,.7);transition:opacity .25s}
+.url{margin-left:10px;flex:1;max-width:420px;background:#fff;border-radius:999px;padding:4px 14px;font:12.5px/1.5 var(--mono);color:#46607a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.url.typing::after{content:"";display:inline-block;width:1px;height:1em;margin-left:1px;vertical-align:-2px;background:#46607a;animation:blink .8s steps(1) infinite}
+.browser img{display:block;width:100%;height:auto;aspect-ratio:1400/836;object-fit:cover;object-position:top;transition:opacity .22s,transform .5s var(--ease)}
+.browser img.out{opacity:0;transform:scale(.985)}
+.phone{position:absolute;right:0;bottom:-28px;width:clamp(120px,16vw,220px);margin:0;border:9px solid var(--sea);border-radius:30px;overflow:hidden;background:var(--sea);box-shadow:0 20px 40px -20px rgba(10,37,64,.7);transition:opacity .35s,transform .5s var(--spring)}
 .phone img{display:block;width:100%;height:auto}
-.stage.nophone .phone{opacity:0;visibility:hidden}
+.stage.nophone .phone{opacity:0;visibility:hidden;transform:translateY(20px)}
 .gcap{margin:44px 0 0;color:var(--soft);max-width:70ch;font-size:16px}
 .shot{display:block;width:100%;height:auto;border-radius:10px;border:1px solid #2b5480}
 .card .shot{border-color:var(--line);margin-bottom:4px}
 .mods .shot{grid-column:1/-1}
+
+/* scroll reveal (added by script only) */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease) var(--d,0ms),transform .9s var(--ease) var(--d,0ms)}
+.rv.in{opacity:1;transform:none}
+
+@keyframes navIn{from{transform:translateY(-130%)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@keyframes wordUp{from{transform:translateY(110%)}}
+@keyframes clear{from{opacity:0;filter:blur(16px)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(61,220,151,.55)}70%{box-shadow:0 0 0 9px rgba(61,220,151,0)}100%{box-shadow:0 0 0 0 rgba(61,220,151,0)}}
+@keyframes mq{to{transform:translateX(-50%)}}
+@keyframes blink{50%{opacity:0}}
+
+@media(max-width:980px){
+  nav .wrap{flex-wrap:wrap;border-radius:22px;padding:8px 8px 6px 16px}
+  .brand{margin-right:auto}
+  .links{order:3;flex-basis:100%;margin:0 -2px;overflow-x:auto}
+  .links a{font-size:14px;padding:8px 12px}
+}
 @media(max-width:700px){.stage{padding-right:0}.phone{display:none}.gcap{margin-top:16px}}
-@media(max-width:900px){.feature{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:26px;border-top:0}.steps li{border-top:3px solid var(--pink)}}
+@media(max-width:900px){.feature{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:30px;border-top:0}.steps li{border-top:3px solid var(--pink)}
+  .steps.prog::before,.steps.prog::after{display:none}.steps.prog li{border-top-color:var(--line);transition:border-color .5s}.steps.prog li.lit{border-top-color:var(--pink)}}
 @media(max-width:760px){.hero .top,.split{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:600px){nav b{flex-basis:100%}nav a{font-size:14px}.fig{height:520px}.mods{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:minmax(0,1fr)}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(max-width:600px){nav .wrap{gap:6px 8px;padding-left:14px}.brand{font-size:15px;gap:8px}.lang button{padding:0 9px;min-width:38px;min-height:32px;font-size:13px}.fig{height:520px}.mods{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:minmax(0,1fr)}.btn{flex:1 1 auto;justify-content:center}.gtabs{display:flex}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.hero::after{display:none}}
 </style>
 </head>
 <body>
-<nav><div class="wrap"><b>Mustika D. Kharisma</b><a href="#hasil" data-k="n0">Galeri</a><a href="#proyek" data-k="n1">Proyek</a><a href="#cara-kerja" data-k="n2">Cara kerja</a><a href="#latar" data-k="n3">Latar belakang</a><a href="#kontak" data-k="n4">Kontak</a>
+<div class="progress" id="prog" aria-hidden="true"></div>
+<nav id="nav"><div class="wrap"><a class="brand" href="#top">Mustika D. Kharisma</a>
+<div class="links" id="links"><span class="ind" aria-hidden="true"></span><a href="#hasil" data-k="n0">Galeri</a><a href="#proyek" data-k="n1">Proyek</a><a href="#cara-kerja" data-k="n2">Cara kerja</a><a href="#latar" data-k="n3">Latar belakang</a><a href="#kontak" data-k="n4">Kontak</a></div>
 <div class="lang" role="group" aria-label="Bahasa / Language / 语言"><button type="button" id="l-id" data-l="id" aria-pressed="true">ID</button><button type="button" id="l-en" data-l="en" aria-pressed="false">EN</button><button type="button" id="l-zh" data-l="zh" aria-pressed="false">中文</button></div></div></nav>
 
-<header class="hero band">
+<header class="hero band" id="top">
   <div class="wrap">
     <div class="top">
       <div>
-        <h1>Mustika Dwi Kharisma</h1>
+        <p class="badge"><span class="dot" aria-hidden="true"></span><span data-k="st">Terbuka untuk peran AI Specialist</span></p>
+        <h1><span class="w"><span>Mustika</span></span> <span class="w"><span>Dwi</span></span> <span class="w"><span>Kharisma</span></span></h1>
         <p class="role" data-k="role">AI Specialist dengan latar finance &amp; operasional</p>
         <p class="lead" data-k="lead">Saya membangun sistem dan alat berbasis AI untuk masalah bisnis yang saya tangani sendiri setiap hari: dari ERP perusahaan, bot layanan pelanggan, website, sampai produksi konten harian. Saya tidak berangkat dari teknologi, tapi dari kebutuhan tim dan angka di pembukuan.</p>
+        <div class="cta"><a class="btn pri down" href="#proyek" data-k="ctaP">Lihat proyek</a><a class="btn ghost ext" href="https://wa.me/6285814638997" target="_blank" rel="noopener" data-k="ctaW">Chat WhatsApp</a></div>
       </div>
       <ul class="facts">
         <li><strong>1</strong><span data-k="f1">sistem ERP yang menyatukan HR, penjualan, accounting, inventory, dan service request</span></li>
@@ -147,11 +256,15 @@ footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,1
   </div>
 </header>
 
+<div class="mq" aria-hidden="true"><div class="mqi"><div class="mqt" id="mqt"></div></div></div>
+
 <section class="band show" id="hasil">
   <div class="wrap">
+    <p class="eyebrow"><span>01</span><span data-k="n0">Galeri</span></p>
     <h2 data-k="gH">Hasil kerja yang bisa dilihat</h2>
     <p class="intro" data-k="gI">Tangkapan layar asli dari website dan sistem yang saya bangun.</p>
-    <div class="gtabs" role="tablist" aria-label="Galeri">
+    <div class="gtabs" id="gtabs" role="tablist" aria-label="Galeri">
+      <span class="ind" aria-hidden="true"></span>
       <button type="button" role="tab" id="t-web" data-g="web" aria-selected="true" data-k="gt1">singapower.com</button>
       <button type="button" role="tab" id="t-calc" data-g="calc" aria-selected="false" data-k="gt2">Kalkulator daya</button>
       <button type="button" role="tab" id="t-zh" data-g="zh" aria-selected="false" data-k="gt3">Tiga bahasa</button>
@@ -167,6 +280,7 @@ footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,1
 
 <section class="band" id="proyek">
   <div class="wrap">
+    <p class="eyebrow"><span>02</span><span data-k="n1">Proyek</span></p>
     <h2 data-k="pH">Yang sudah saya bangun</h2>
     <p class="intro" data-k="pI">Semua proyek di bawah saya kerjakan sendiri dengan bantuan AI, sambil tetap menjalankan peran manager dan finance. Data internal perusahaan tidak ditampilkan.</p>
     <div class="grid">
@@ -235,13 +349,14 @@ footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,1
 
 <section class="band alt" id="cara-kerja">
   <div class="wrap">
+    <p class="eyebrow"><span>03</span><span data-k="n2">Cara kerja</span></p>
     <h2 data-k="cH">Cara saya bekerja dengan AI</h2>
     <p class="intro" data-k="cI">Pola yang sama saya pakai di setiap proyek, dari ERP sampai konten harian.</p>
-    <ol class="steps">
-      <li><b data-k="c1">Mulai dari masalah</b><p data-k="c1p">Saya memegang approval, petty cash, rekonsiliasi bank, dan memimpin enam tim, jadi saya tahu persis di mana pekerjaan macet.</p></li>
-      <li><b data-k="c2">Rancang alurnya</b><p data-k="c2p">Petakan siapa yang input, siapa yang cek, dan data apa yang dibutuhkan sebelum menyentuh tools apa pun.</p></li>
-      <li><b data-k="c3">Bangun dengan AI</b><p data-k="c3p">AI saya pakai sebagai partner untuk coding, menulis, desain, dan terjemahan, sehingga satu orang bisa menyelesaikan kerja satu tim.</p></li>
-      <li><b data-k="c4">Pakai dan perbaiki</b><p data-k="c4p">Sistem langsung dipakai tim sehari-hari, dan masukan mereka jadi bahan perbaikan berikutnya.</p></li>
+    <ol class="steps" id="steps">
+      <li><span class="no" aria-hidden="true">01</span><b data-k="c1">Mulai dari masalah</b><p data-k="c1p">Saya memegang approval, petty cash, rekonsiliasi bank, dan memimpin enam tim, jadi saya tahu persis di mana pekerjaan macet.</p></li>
+      <li><span class="no" aria-hidden="true">02</span><b data-k="c2">Rancang alurnya</b><p data-k="c2p">Petakan siapa yang input, siapa yang cek, dan data apa yang dibutuhkan sebelum menyentuh tools apa pun.</p></li>
+      <li><span class="no" aria-hidden="true">03</span><b data-k="c3">Bangun dengan AI</b><p data-k="c3p">AI saya pakai sebagai partner untuk coding, menulis, desain, dan terjemahan, sehingga satu orang bisa menyelesaikan kerja satu tim.</p></li>
+      <li><span class="no" aria-hidden="true">04</span><b data-k="c4">Pakai dan perbaiki</b><p data-k="c4p">Sistem langsung dipakai tim sehari-hari, dan masukan mereka jadi bahan perbaikan berikutnya.</p></li>
     </ol>
   </div>
 </section>
@@ -249,6 +364,7 @@ footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,1
 <section class="band" id="latar">
   <div class="wrap split">
     <div>
+      <p class="eyebrow"><span>04</span><span data-k="eb4">Pengalaman</span></p>
       <h2 data-k="lH">Latar belakang</h2>
       <p class="intro" data-k="lI">Pengalaman di operasional dan keuangan adalah alasan alat yang saya bangun benar-benar terpakai.</p>
       <ul class="time">
@@ -267,16 +383,22 @@ footer{background:var(--sea);color:#8fb0cc;font-size:14px;padding:18px max(5vw,1
 
 <section class="band contact" id="kontak">
   <div class="wrap">
+    <p class="eyebrow"><span>05</span><span data-k="n4">Kontak</span></p>
     <h2 data-k="kkH">Mencari peran AI Specialist atau AI Automation</h2>
     <p data-k="kkP">Saya paling cocok di tim yang butuh orang yang paham proses bisnis dan keuangan, sekaligus bisa langsung membangun solusinya dengan AI.</p>
-    <div class="row"><span>WhatsApp +62 858 1463 8997</span><span>mustikadwi6905@gmail.com</span><span data-k="loc">Jakarta Barat</span><span data-k="av">Siap bergabung segera</span></div>
+    <div class="cta"><a class="btn pri ext" href="https://wa.me/6285814638997" target="_blank" rel="noopener">WhatsApp +62 858 1463 8997</a><a class="btn ghost" href="mailto:mustikadwi6905@gmail.com">mustikadwi6905@gmail.com</a></div>
+    <div class="row"><span data-k="loc">Jakarta Barat</span><span><span class="dot" aria-hidden="true"></span><span data-k="av">Siap bergabung segera</span></span></div>
   </div>
 </section>
-<footer><div class="wrap" data-k="ft">Mustika Dwi Kharisma · Portofolio 2026</div></footer>
+<footer>
+  <div class="wrap foot"><span data-k="ft">Mustika Dwi Kharisma · Portofolio 2026</span><a href="#top" data-k="top">Kembali ke atas ↑</a></div>
+  <span class="mark" id="mark" aria-hidden="true">Mustika</span>
+</footer>
 
 <script>
 {
 const EN={gH:"Work you can see",gI:"Real screenshots of the website and systems I built.",gt1:"singapower.com",gt2:"Power calculator",gt3:"Three languages",gt4:"Kentford ERP",n0:"Gallery",n1:"Projects",n2:"How I work",n3:"Background",n4:"Contact",
+st:"Open to AI Specialist roles",ctaP:"See my work",ctaW:"Chat on WhatsApp",top:"Back to top ↑",eb4:"Experience",
 role:"AI Specialist with a finance & operations background",
 lead:"I build AI-powered systems and tools for the business problems I handle myself every day: a company ERP, a customer service bot, a website, and daily content production. I don’t start from technology. I start from what the team needs and what the books say.",
 f1:"ERP system bringing HR, sales, accounting, inventory and service requests together",
@@ -308,9 +430,11 @@ g2:"Business & finance",g2a:"Bookkeeping & journals",g2b:"Bank reconciliation",g
 g3:"Tools & languages",g3a:"Indonesian",g3b:"English (spoken & written)",
 kkH:"Looking for an AI Specialist or AI Automation role",kkP:"I fit best in a team that needs someone who understands business processes and finance, and can build the solution directly with AI.",
 loc:"West Jakarta",av:"Available immediately",ft:"Mustika Dwi Kharisma · Portfolio 2026",
+mq:["Claude","Prompt design","AI chatbots","Google Analytics","Meta Ads","Lark","Workflow automation","ERP","AI content","AI translation","Bank reconciliation","Bookkeeping"],
 mC:"Customers",mO:"Operations",mM:"Marketing",mBot:"AI bot",mBotS:"customer service",mWebS:"website + analytics",mCon:"Daily content",mConS:"3 per day",mAds:"Meta Ads",mProf:"Company profile",mod:["HR","Sales","Accounting","Inventory","Service"],modN:["HR","Sales","Acct","Stock","Service"],
 title:"Mustika Dwi Kharisma Portfolio",map:"System map: Kentford ERP in the centre, customer tools on the left, marketing engine on the right"};
 const ZH={gH:"看得见的成果",gI:"我搭建的网站和系统的真实截图。",gt1:"singapower.com",gt2:"功率计算器",gt3:"三种语言",gt4:"Kentford ERP",n0:"作品展示",n1:"项目",n2:"工作方式",n3:"背景",n4:"联系",
+st:"正在寻找AI专员职位",ctaP:"查看项目",ctaW:"WhatsApp 联系",top:"返回顶部 ↑",eb4:"经历",
 role:"具有财务与运营背景的AI专员",
 lead:"我为自己每天处理的业务问题搭建AI系统和工具：公司ERP、客服机器人、网站，以及每日内容制作。我的出发点不是技术，而是团队的需求和账本上的数字。",
 f1:"套ERP系统，整合人事、销售、财务、库存和售后服务",
@@ -342,25 +466,38 @@ g2:"业务与财务",g2a:"记账与会计分录",g2b:"银行对账",g2c:"资产�
 g3:"工具与语言",g3a:"印尼语",g3b:"英语（口语与书面）",
 kkH:"寻找AI专员或AI自动化相关岗位",kkP:"我最适合这样的团队：需要一个既懂业务流程和财务、又能直接用AI搭建解决方案的人。",
 loc:"雅加达西区",av:"可随时入职",ft:"Mustika Dwi Kharisma · 作品集 2026",
+mq:["Claude","提示词设计","AI聊天机器人","Google Analytics","Meta Ads","Lark","工作流自动化","ERP","AI内容","AI翻译","银行对账","记账"],
 mC:"客户",mO:"运营",mM:"营销",mBot:"AI客服",mBotS:"客户服务",mWebS:"网站 + 数据分析",mCon:"每日内容",mConS:"每天3条",mAds:"Meta Ads",mProf:"公司简介",mod:["人事","销售","财务","库存","售后"],modN:["人事","销售","财务","库存","售后"],
 title:"Mustika Dwi Kharisma 作品集",map:"系统图：Kentford ERP位于中心，左侧为客户工具，右侧为营销引擎"};
-const ID={mC:"Pelanggan",mO:"Operasional",mM:"Pemasaran",mBot:"Bot AI",mBotS:"layanan customer",mWebS:"website + analitik",mCon:"Konten harian",mConS:"3 per hari",mAds:"Iklan Meta Ads",mProf:"Company profile",mod:["HR","Penjualan","Accounting","Inventory","Servis"],modN:["HR","Jual","Akun","Stok","Servis"],title:document.title,map:document.getElementById('map').getAttribute('aria-label')};
+const ID={mq:["Claude","Prompt design","Chatbot AI","Google Analytics","Meta Ads","Lark","Otomasi alur kerja","ERP","Konten AI","Terjemahan AI","Rekonsiliasi bank","Pembukuan"],
+mC:"Pelanggan",mO:"Operasional",mM:"Pemasaran",mBot:"Bot AI",mBotS:"layanan customer",mWebS:"website + analitik",mCon:"Konten harian",mConS:"3 per hari",mAds:"Iklan Meta Ads",mProf:"Company profile",mod:["HR","Penjualan","Accounting","Inventory","Servis"],modN:["HR","Jual","Akun","Stok","Servis"],title:document.title,map:document.getElementById('map').getAttribute('aria-label')};
 document.querySelectorAll('[data-k]').forEach(el=>{ID[el.dataset.k]=el.textContent});
 const D={id:ID,en:EN,zh:ZH};
 let L=ID;
+const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
 const s=document.getElementById('mapsvg');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine=matchMedia('(hover: hover) and (pointer: fine)').matches;
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cjk=t=>/[　-鿿]/.test(t);
-const tw=(t,sz)=>[...t].reduce((a,c)=>a+(cjk(c)?sz:sz*0.56),0)+28;
-const box=(x,y,label,sub,kind)=>{
-  const sz=kind==='hub'?20:15, w=Math.max(tw(label,sz),sub?tw(sub,13):0), h=sub?(kind==='hub'?66:54):42;
+const cv=document.createElement('canvas').getContext('2d');
+const tw=(t,sz,wt,pad)=>{
+  let w;
+  try{cv.font=`${wt} ${sz}px ${getComputedStyle(document.body).fontFamily}`;w=cv.measureText(t).width}catch(e){}
+  if(!w) w=[...t].reduce((a,c)=>a+(cjk(c)?sz:sz*0.6),0);
+  return w+pad;
+};
+
+/* ---------- system map ---------- */
+const box=(x,y,label,sub,kind,o={})=>{
+  const sz=o.sz||(kind==='hub'?20:15), pad=o.pad||28, w=Math.max(tw(label,sz,600,pad),sub?tw(sub,13,400,pad):0), h=sub?(kind==='hub'?66:54):(o.h||42);
   const fill=kind==='hub'?'#ff5c8a':kind==='mod'?'#123a63':'#0f3358';
   const stroke=kind==='hub'?'#ff9fbb':'#3c6e9e';
   const tc=kind==='hub'?'#2a0612':'#ffffff';
   return {x,y,w,h,svg:`<rect x="${x-w/2+3}" y="${y-h/2+5}" width="${w}" height="${h}" rx="12" fill="#04162a" opacity=".55"/>
   <rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="12" fill="${fill}" stroke="${stroke}"/>
-  <text x="${x}" y="${sub?y-4:y+5}" text-anchor="middle" font-size="${sz}" font-weight="700" fill="${tc}">${esc(label)}</text>`+
+  <text x="${x}" y="${sub?y-4:y+Math.round(sz/3)}" text-anchor="middle" font-size="${sz}" font-weight="600" fill="${tc}">${esc(label)}</text>`+
   (sub?`<text x="${x}" y="${y+(kind==='hub'?20:16)}" text-anchor="middle" font-size="13" fill="${kind==='hub'?'#3d0a1b':'#a9c8e0'}">${esc(sub)}</text>`:'')};
 };
 const draw=()=>{
@@ -369,7 +506,7 @@ const draw=()=>{
   let Lf=[],R=[],hub,mods=[],heads=[];
   if(!narrow){
     const lx=W*0.14,rx=W*0.86,cx=W/2;
-    heads=[[lx,L.mC],[cx,L.mO],[rx,L.mM]].map(([x,t])=>`<text x="${x}" y="26" text-anchor="middle" font-size="14" font-weight="600" fill="#8fd3ff">${esc(t)}</text>`);
+    heads=[[lx,L.mC],[cx,L.mO],[rx,L.mM]].map(([x,t])=>`<text x="${x}" y="26" text-anchor="middle" font-size="14" font-weight="500" fill="#8fd3ff">${esc(t)}</text>`);
     Lf=[box(lx,H*0.36,L.mBot,L.mBotS),box(lx,H*0.68,'singapower.com',L.mWebS)];
     R=[box(rx,H*0.26,L.mCon,L.mConS),box(rx,H*0.52,L.mAds),box(rx,H*0.76,L.mProf)];
     hub=box(cx,H*0.32,'Kentford ERP','kentford.cloud','hub');
@@ -378,10 +515,10 @@ const draw=()=>{
     mods=labs.map((t,i)=>box(cx+(i-2)*gap,my+(i%2?48:0),t,'','mod'));
   }else{
     const cx=W/2;
-    heads=[[24,L.mC,H*0.05],[24,L.mO,H*0.33],[24,L.mM,H*0.77]].map(([x,t,y])=>`<text x="${x}" y="${y}" font-size="14" font-weight="600" fill="#8fd3ff">${esc(t)}</text>`);
+    heads=[[24,L.mC,H*0.05],[24,L.mO,H*0.33],[24,L.mM,H*0.77]].map(([x,t,y])=>`<text x="${x}" y="${y}" font-size="14" font-weight="500" fill="#8fd3ff">${esc(t)}</text>`);
     Lf=[box(W*0.28,H*0.15,L.mBot),box(W*0.72,H*0.15,'Website')];
     hub=box(cx,H*0.44,'Kentford ERP','kentford.cloud','hub');
-    mods=L.modN.map((t,i)=>box(W*(0.12+i*0.19),H*0.62,t,'','mod'));
+    mods=L.modN.map((t,i)=>box(W*(0.1+i*0.2),H*0.62,t,'','mod',{sz:13,pad:14,h:38}));
     R=[box(W*0.2,H*0.9,L.mCon),box(W*0.53,H*0.9,'Ads'),box(W*0.83,H*0.9,'Profile')];
   }
   const paths=[];
@@ -400,40 +537,160 @@ const draw=()=>{
   };
   const vlink=(a,b)=>{const y1=a.y+a.h/2,y2=b.y-b.h/2,m=(y1+y2)/2;const d=`M${a.x},${y1} C${a.x},${m} ${b.x},${m} ${b.x},${y2}`;return `<path d="${d}" fill="none" stroke="#8fd3ff" stroke-width="2" opacity=".8"/>`};
   const lines=Lf.map(n=>link(n,hub,true)).join('')+R.map(n=>link(hub,n,false)).join('')+mods.map(m=>vlink(hub,m)).join('');
-  let grid='';
-  for(let x=0;x<W;x+=40) grid+=`<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="#ffffff" opacity=".04"/>`;
-  for(let y=0;y<H;y+=40) grid+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#ffffff" opacity=".04"/>`;
-  const glow=`<circle cx="${hub.x}" cy="${hub.y}" r="${Math.min(W,H)*0.32}" fill="url(#g)"/>`;
-  const tok=reduce?'':paths.slice(0,2).map((d,i)=>`<circle r="5" fill="#ffffff"><animateMotion dur="${3.2+i}s" repeatCount="indefinite" path="${d}"/></circle>`).join('');
-  s.innerHTML=`<defs><radialGradient id="g"><stop offset="0" stop-color="#ff5c8a" stop-opacity=".22"/><stop offset="1" stop-color="#ff5c8a" stop-opacity="0"/></radialGradient></defs>`+
-    grid+glow+heads.join('')+lines+tok+[...Lf,...R,...mods,hub].map(n=>n.svg).join('');
+  const glow=`<circle cx="${hub.x}" cy="${hub.y}" r="${Math.min(W,H)*0.34}" fill="url(#g)"/>`;
+  const tok=reduce?'':paths.slice(0,2).map((d,i)=>`<circle r="5" fill="#ffffff"><animateMotion dur="${3.2+i}s" repeatCount="indefinite" path="${d}"/></circle>`).join('')+
+    paths.slice(2).map((d,i)=>`<circle r="3" fill="#8fd3ff" opacity=".85"><animateMotion dur="${4.6+i*.7}s" begin="${i*.6}s" repeatCount="indefinite" path="${d}"/></circle>`).join('');
+  s.innerHTML=`<defs><radialGradient id="g"><stop offset="0" stop-color="#ff5c8a" stop-opacity=".24"/><stop offset="1" stop-color="#ff5c8a" stop-opacity="0"/></radialGradient></defs>`+
+    glow+heads.join('')+lines+tok+[...Lf,...R,...mods,hub].map(n=>n.svg).join('');
 };
+
+/* ---------- sliding pill indicators ---------- */
+const place=(ind,el)=>{
+  if(!ind) return;
+  if(!el){ind.style.opacity=0;return}
+  const first=ind.style.opacity!=='1';
+  if(first) ind.style.transition='none';
+  ind.style.width=el.offsetWidth+'px'; ind.style.height=el.offsetHeight+'px';
+  ind.style.transform=`translate(${el.offsetLeft}px,${el.offsetTop}px)`;
+  if(first){ind.offsetWidth; ind.style.transition=''}
+  ind.style.opacity=1;
+};
+const linksEl=$('#links'), navInd=linksEl.querySelector('.ind'), navLinks=$$('#links a');
+let active=null, hover=null;
+const navUpd=()=>{
+  const a=navLinks.find(l=>l.hash==='#'+active)||null;
+  navLinks.forEach(l=>l===a?l.setAttribute('aria-current','true'):l.removeAttribute('aria-current'));
+  place(navInd,hover||a);
+  if(a&&!hover&&linksEl.scrollWidth>linksEl.clientWidth){
+    const l=a.offsetLeft, r=l+a.offsetWidth;
+    if(l<linksEl.scrollLeft||r>linksEl.scrollLeft+linksEl.clientWidth) linksEl.scrollTo({left:l-12,behavior:reduce?'auto':'smooth'});
+  }
+};
+if(fine){navLinks.forEach(l=>{l.addEventListener('pointerenter',()=>{hover=l;navUpd()})});linksEl.addEventListener('pointerleave',()=>{hover=null;navUpd()})}
+const setActive=id=>{if(id!==active){active=id;navUpd()}};
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting) setActive(e.target.id==='top'?null:e.target.id)}),{rootMargin:'-42% 0px -55% 0px'});
+$$('#top, section[id]').forEach(x=>spy.observe(x));
+
+const gtabs=$('#gtabs'), gInd=gtabs.querySelector('.ind');
+gtabs.classList.add('slid');
+const tabUpd=()=>place(gInd,gtabs.querySelector('[aria-selected=true]'));
+
+/* ---------- gallery ---------- */
 const GAL={
 web:{img:"web-home.jpg",url:"singapower.com",phone:1,alt:{id:"Halaman utama singapower.com",en:"singapower.com home page",zh:"singapower.com 首页"},cap:{id:"Website merek genset Singapower yang saya bangun dengan AI. Tampil rapi di desktop maupun HP.",en:"The Singapower generator brand website I built with AI. Works cleanly on desktop and phone.",zh:"我借助AI搭建的Singapower发电机组品牌官网，电脑和手机上都能良好显示。"}},
 calc:{img:"web-kalkulator.jpg",url:"singapower.com/kalkulator-daya-genset",phone:1,alt:{id:"Kalkulator daya genset dengan hasil 500 kVA",en:"Generator power calculator showing a 500 kVA result",zh:"发电机组功率计算器，结果为500 kVA"},cap:{id:"Kalkulator daya genset di singapower.com. Customer memasukkan peralatannya, sistem menghitung kVA dan merekomendasikan kapasitas genset. Contoh ini memakai preset pabrik dan menghasilkan 500 kVA.",en:"The generator power calculator on singapower.com. Customers enter their equipment and it works out the kVA and recommends a generator size. This example uses the factory preset and recommends 500 kVA.",zh:"singapower.com上的发电机组功率计算器。客户输入设备后，系统计算kVA并推荐发电机组容量。此示例使用工厂预设，推荐500 kVA。"}},
 zh:{img:"web-zh.jpg",url:"singapower.com/zh",phone:1,alt:{id:"singapower.com versi Mandarin",en:"singapower.com in Chinese",zh:"singapower.com 中文版"},cap:{id:"Website yang sama dalam versi 中文. Tersedia juga dalam Bahasa Indonesia dan English.",en:"The same website in Chinese. It is also available in Indonesian and English.",zh:"同一网站的中文版，另有印尼语和英语版本。"}},
 erp:{img:"erp-login.jpg",url:"kentford.cloud",phone:0,alt:{id:"Halaman masuk Kentford ERP",en:"Kentford ERP sign-in page",zh:"Kentford ERP 登录页面"},cap:{id:"Halaman masuk Kentford ERP. Isi sistemnya tidak ditampilkan karena berisi data internal perusahaan.",en:"The Kentford ERP sign-in page. The inside of the system is not shown because it holds internal company data.",zh:"Kentford ERP登录页面。系统内部含有公司内部数据，因此不予展示。"}}};
-let gCur='web',lCur='id';
-const gShow=()=>{const g=GAL[gCur];const im=document.getElementById('gimg');im.src=g.img;im.alt=g.alt[lCur];document.getElementById('gurl').textContent=g.url;document.getElementById('gcap').textContent=g.cap[lCur];document.getElementById('stage').classList.toggle('nophone',!g.phone);document.querySelectorAll('.gtabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.g===gCur)))};
-document.querySelectorAll('.gtabs button').forEach(b=>b.addEventListener('click',()=>{gCur=b.dataset.g;gShow()}));
+let gCur='web',lCur='id',typeT=0,swapT=0;
+const gimg=$('#gimg'), gurl=$('#gurl');
+const typeUrl=t=>{
+  clearInterval(typeT); gurl.classList.remove('typing');
+  if(reduce){gurl.textContent=t;return}
+  let i=0; gurl.textContent=''; gurl.classList.add('typing');
+  typeT=setInterval(()=>{gurl.textContent=t.slice(0,++i);if(i>=t.length){clearInterval(typeT);gurl.classList.remove('typing')}},26);
+};
+const gShow=anim=>{
+  const g=GAL[gCur];
+  const alt=g.alt[lCur];
+  if(gimg.getAttribute('src')!==g.img){
+    if(reduce||!anim){gimg.src=g.img;gimg.alt=alt}
+    else{clearTimeout(swapT);gimg.classList.add('out');swapT=setTimeout(()=>{gimg.src=g.img;gimg.alt=alt;const done=()=>gimg.classList.remove('out');gimg.decode?gimg.decode().then(done,done):done()},200)}
+  }else gimg.alt=alt;
+  if(anim) typeUrl(g.url); else {clearInterval(typeT);gurl.classList.remove('typing');gurl.textContent=g.url}
+  $('#gcap').textContent=g.cap[lCur];
+  $('#stage').classList.toggle('nophone',!g.phone);
+  $$('.gtabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.g===gCur)));
+  tabUpd();
+};
+$$('.gtabs button').forEach(b=>b.addEventListener('click',()=>{if(gCur===b.dataset.g)return;gCur=b.dataset.g;gShow(true)}));
 Object.values(GAL).forEach(g=>{const i=new Image();i.src=g.img});
+
+/* ---------- marquee ---------- */
+const mqt=$('#mqt');
+const mqFill=()=>{const items=[...L.mq,...L.mq];mqt.innerHTML=[...items,...items].map(t=>`<span>${esc(t)}</span>`).join('')};
+
+/* ---------- language ---------- */
 const setLang=(code,push)=>{
   if(!D[code]) code='id';
   L=D[code];lCur=code;
   document.documentElement.lang=code;
-  document.querySelectorAll('[data-k]').forEach(el=>{const v=L[el.dataset.k]??ID[el.dataset.k];if(v!=null) el.textContent=v});
-  document.title=L.title; document.getElementById('map').setAttribute('aria-label',L.map);
-  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===code)));
+  $$('[data-k]').forEach(el=>{const v=L[el.dataset.k]??ID[el.dataset.k];if(v!=null) el.textContent=v});
+  document.title=L.title; $('#map').setAttribute('aria-label',L.map);
+  $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===code)));
   try{localStorage.setItem('lang',code)}catch(e){}
   if(push){try{history.replaceState(null,'',code==='id'?location.pathname:'#'+code)}catch(e){}}
-  draw();gShow();
+  mqFill();draw();gShow(false);navUpd();
 };
-document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l,true)));
-const ro=new ResizeObserver(draw); ro.observe(s);
-if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
+$$('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l,true)));
+
+/* ---------- hero: cursor-lit dots + map parallax ---------- */
+const hero=$('#top'), fig=$('#map');
+if(fine&&!reduce){
+  hero.addEventListener('pointermove',e=>{
+    const r=hero.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+    hero.style.setProperty('--mx',(x*100).toFixed(2)+'%'); hero.style.setProperty('--my',(y*100).toFixed(2)+'%');
+    hero.classList.add('lit');
+    s.style.transform=`translate3d(${((x-.5)*-16).toFixed(1)}px,${((y-.5)*-10).toFixed(1)}px,0)`;
+  });
+  hero.addEventListener('pointerleave',()=>{hero.classList.remove('lit');s.style.transform=''});
+}
+
+/* ---------- card spotlight ---------- */
+if(fine) $$('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--x',(e.clientX-r.left)+'px');c.style.setProperty('--y',(e.clientY-r.top)+'px')}));
+
+/* ---------- scroll reveal ---------- */
+if(!reduce&&'IntersectionObserver' in window){
+  const els=$$('.band:not(.hero) .eyebrow, .band:not(.hero) h2, .band .intro, .grid>.card, .gtabs, .stage, .gcap, .steps li, .time li, .skills>.card, .contact p, .contact .cta, .contact .row');
+  const rio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el=e.target; el.classList.add('in'); rio.unobserve(el);
+    setTimeout(()=>{el.classList.remove('rv','in');el.style.removeProperty('--d')},1000+(parseInt(el.style.getPropertyValue('--d'))||0));
+  }),{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(el=>{
+    const sib=[...el.parentElement.children].filter(c=>els.includes(c));
+    el.style.setProperty('--d',Math.min(sib.indexOf(el),5)*80+'ms');
+    el.classList.add('rv'); rio.observe(el);
+  });
+}
+
+/* ---------- scroll-linked: progress, nav, hero map, method line, wordmark ---------- */
+const nav=$('#nav'), prog=$('#prog'), steps=$('#steps'), stepLis=$$('#steps li'), mark=$('#mark');
+const wide=matchMedia('(min-width: 901px)');
+steps.classList.add('prog');
+const setNavH=()=>document.documentElement.style.setProperty('--navh',nav.offsetHeight+'px');
+let ticking=false;
+const onScroll=()=>{
+  if(ticking) return; ticking=true;
+  requestAnimationFrame(()=>{
+    ticking=false;
+    const y=scrollY, vh=innerHeight, max=document.documentElement.scrollHeight-vh;
+    prog.style.transform=`scaleX(${max>0?clamp(y/max,0,1):0})`;
+    nav.classList.toggle('scrolled',y>12);
+    if(!reduce){
+      const k=clamp(y/Math.max(1,hero.offsetHeight),0,1);
+      fig.style.transform=`translateY(${(k*40).toFixed(1)}px) scale(${(1-k*.07).toFixed(4)})`;
+      fig.style.opacity=(1-k*.6).toFixed(3);
+      const mr=mark.getBoundingClientRect();
+      mark.style.setProperty('--f',clamp((vh-mr.top)/(mr.height*1.2),0,1).toFixed(3));
+    }
+    const r=steps.getBoundingClientRect();
+    const p=clamp((vh*.85-r.top)/(vh*.5),0,1);
+    steps.style.setProperty('--p',p.toFixed(3));
+    stepLis.forEach((li,i)=>li.classList.toggle('lit',wide.matches?p>=i/4+.02:li.getBoundingClientRect().top<vh*.82));
+    if(max>0&&y>=max-4) setActive('kontak');
+  });
+};
+addEventListener('scroll',onScroll,{passive:true});
+addEventListener('resize',()=>{setNavH();onScroll();navUpd();tabUpd()});
+new ResizeObserver(()=>{setNavH();navUpd()}).observe(nav);
+new ResizeObserver(draw).observe(s);
+new ResizeObserver(tabUpd).observe(gtabs);
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{setNavH();draw();navUpd();tabUpd()});
+
 let start=location.hash.slice(1);
 if(!D[start]){try{start=localStorage.getItem('lang')||'id'}catch(e){start='id'}}
 setLang(start,false);
+setNavH();onScroll();
 addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(D[h]) setLang(h,false)});
 }
 </script>
